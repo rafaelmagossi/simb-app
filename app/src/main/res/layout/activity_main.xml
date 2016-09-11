@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,12 +11,16 @@
     <!--android:paddingTop="@dimen/activity_vertical_margin"-->
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tb_padrao"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_padrao"
         android:layout_alignParentTop="true"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
 
 
 
@@ -32,12 +37,13 @@
         android:layout_marginBottom="80dp"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_below="@+id/tb_padrao">
+        android:layout_below="@+id/toolbar_padrao">
 
 
 
         <ImageButton
             android:id="@+id/button_img_novocadastro"
+            android:onClick="OnClickImgButtonNovoCadastro"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="8dp"
@@ -48,6 +54,7 @@
 
         <ImageButton
             android:id="@+id/button_img_scannertag"
+            android:onClick="OnClickImgButtonScanner"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="8dp"
@@ -58,6 +65,7 @@
 
         <ImageButton
             android:id="@+id/button_img_buscar"
+            android:onClick="OnClickImgButtonBuscar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="8dp"
@@ -68,6 +76,7 @@
 
         <ImageButton
             android:id="@+id/button_img_tarefas"
+            android:onClick="OnClickImgButtonTarefas"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="8dp"

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Simb</string>
-    <string name="app_subname">Sistema de Identificação Bovina</string>
+    <string name="app_toolbar_name">Sistema</string>
+    <string name="app_toolbar_subname">de Identificação Bovina</string>
+    <string name="menu_config">Configurações</string>
+    <string name="menu_sobre">Sobre</string>
+    <string name="menu_home">Home</string>
+
 </resources>
