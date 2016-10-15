@@ -12,51 +12,41 @@ import android.view.MenuItem;
 
 import com.magossi.simb.MainActivity;
 import com.magossi.simb.R;
+import com.magossi.simb.domain.Bovino;
+import com.magossi.simb.fragment.BovinoFragment;
 import com.magossi.simb.fragment.BovinosFragment;
 
 /**
- * Created by RafaelMq on 08/09/2016.
+ * Created by RafaelMq on 13/10/2016.
  */
-
-
-
-public class BuscarActivity extends AppCompatActivity {
+public class BovinoActivity extends AppCompatActivity {
 
     Toolbar toolbarPadrao;
-    FragmentManager fm = getSupportFragmentManager();
 
 
-    BovinosFragment bovinosFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buscar);
+        setContentView(R.layout.activity_bovino);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT);
 
+        BovinoFragment bf = (BovinoFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_buscar_bovino);
+        Bovino b = (Bovino) getIntent().getSerializableExtra("bovino");
+        bf.setBovino(b);
+
         toolbarPadrao = (Toolbar)findViewById(R.id.toolbar_busca);
-        toolbarPadrao.setLogo(R.drawable.ic_toobar_busca);
-        toolbarPadrao.setTitle(" Buscar");
+        toolbarPadrao.setLogo(R.drawable.ic_toolbar_cadastro);
+        toolbarPadrao.setTitle(b.nome);
         setSupportActionBar(toolbarPadrao);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarPadrao.setNavigationIcon(R.drawable.ic_toolbar_voltar);
 
-//        if(savedInstanceState == null){
-//
-//            FragmentTransaction ft = fm.beginTransaction();
-//            bovinosFragment = new BovinosFragment();
-//            ft.add(R.id.layout_busca, bovinosFragment);
-//            ft.addToBackStack(null);
-//            ft.commit();
-//        }
 
 
-//        // Atualiza o carro no fragment
-//        BovinosFragment bf = (BovinosFragment) getSupportFragmentManager().findFragmentById(R.id.BovinoFragment);
-//        Bovino b = (Bovino) getIntent().getSerializableExtra("bovino");
-//        bf.setBovino(b);
+
 
 
     }
@@ -82,3 +72,4 @@ public class BuscarActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+

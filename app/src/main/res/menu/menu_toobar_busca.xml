@@ -5,22 +5,11 @@
     tools:context=".MainActivity"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-
     <item
         android:id="@+id/menu_home"
         android:title="@string/menu_home"
         android:icon="@drawable/ic_toolbar_home"
         app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/menu_config"
-        android:title="@string/menu_config"
-        app:showAsAction="never"/>
-
-    <item
-        android:id="@+id/menu_sobre"
-        android:title="@string/menu_sobre"
-        app:showAsAction="never" />
 
 
 

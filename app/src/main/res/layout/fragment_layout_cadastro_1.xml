@@ -1,22 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentEnd="true"
-    android:layout_below="@+id/toolbar_cadastro"
-    >
 
-    <TextView
-        android:id="@+id/textview_frag_cadastro_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Cadastro Fragment 1"
-         />
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:isScrollContainer="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar_cadastro">
 
-</RelativeLayout>
+
+        <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="13dp"
+            android:descendantFocusability="beforeDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edittext_cadastro_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome do Animal"
+                android:maxLines="2" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_pai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/input_layout_nome"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/button_buscar_pai"
+            android:maxLines="2">
+
+            <EditText
+                android:id="@+id/edittext_cadastro_pai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pai" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_buscar_pai"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/input_layout_pai"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorPrimary"
+            android:text="buscar"
+            android:textColor="@android:color/white" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_mae"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/input_layout_pai"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/button_buscar_mae"
+            android:maxLines="2">
+
+            <EditText
+                android:id="@+id/edittext_cadastro_mae"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mae"
+                android:inputType="textEmailAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/button_buscar_mae"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/input_layout_mae"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorPrimary"
+            android:text="buscar"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/textview_cadastro_datanasc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/input_layout_mae"
+            android:layout_marginTop="10dp"
+            android:text="Data de Nascimento"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp" />
+
+
+        <com.github.pinball83.maskededittext.MaskedEditText
+            android:id="@+id/edittext_datanasc"
+            app:mask="**/**/**** "
+            app:notMaskedSymbol="*"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textview_cadastro_datanasc"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/textview_cadastro_proprietario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/edittext_datanasc"
+            android:layout_marginTop="5dp"
+            android:text="Selecione o Proprietario"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp" />
+
+        <Spinner
+            android:id="@+id/spinner_proprietario"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textview_cadastro_proprietario"
+            android:layout_alignLeft="@+id/textview_cadastro_proprietario"
+            android:layout_alignRight="@+id/input_layout_mae"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/spinner"
+            android:spinnerMode="dialog"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textview_cadastro_fazenda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/spinner_proprietario"
+            android:layout_marginTop="16dp"
+            android:text="Selecione a Fazenda"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp" />
+
+        <Spinner
+            android:id="@+id/spinner_fazenda"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textview_cadastro_fazenda"
+            android:layout_alignLeft="@+id/textview_cadastro_fazenda"
+            android:layout_alignRight="@+id/input_layout_mae"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/spinner"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/button_proximo"
+                android:onClick="OnClickButtonProximo"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:text="PROXIMO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="10dp"/>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_below="@+id/toolbar_cadastro"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<android.support.design.widget.TextInputLayout--><!--android:id="@+id/input_layout_password"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content">-->
+
+    <!--<EditText--><!--android:id="@+id/input_password"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:inputType="textPassword"--><!--android:hint="Senha"--><!--/>--><!--</android.support.design.widget.TextInputLayout>-->

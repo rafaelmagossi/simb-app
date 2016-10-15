@@ -48,6 +48,11 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
+        <activity
+            android:name=".activity.BovinoActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.BuscarActivity"/>
+        </activity>
     </application>
 
 </manifest>

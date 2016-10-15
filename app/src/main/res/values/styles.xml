@@ -5,8 +5,14 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/editText</item>  <!-- Color Edit Text -->
         <item name="android:navigationBarColor">@color/navigationBarColor</item>
     </style>
+
+
+    <!--<style name="EditTextTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--<item name="colorControlNormal">#c5c5c5</item>-->
+        <!--<item name="colorAccent">@color/colorPrimaryDark</item>-->
+    <!--</style>-->
 
 </resources>
