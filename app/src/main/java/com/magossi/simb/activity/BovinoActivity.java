@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.magossi.simb.MainActivity;
 import com.magossi.simb.R;
@@ -21,7 +23,8 @@ import com.magossi.simb.fragment.BovinosFragment;
  */
 public class BovinoActivity extends AppCompatActivity {
 
-    Toolbar toolbarPadrao;
+    private Toolbar toolbarPadrao;
+
 
 
 
@@ -38,11 +41,12 @@ public class BovinoActivity extends AppCompatActivity {
 
         toolbarPadrao = (Toolbar)findViewById(R.id.toolbar_busca);
         toolbarPadrao.setLogo(R.drawable.ic_toolbar_cadastro);
-        toolbarPadrao.setTitle(b.nome);
+        toolbarPadrao.setTitle(b.getNomeBovino());
         setSupportActionBar(toolbarPadrao);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarPadrao.setNavigationIcon(R.drawable.ic_toolbar_voltar);
+
 
 
 
@@ -71,5 +75,7 @@ public class BovinoActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
 

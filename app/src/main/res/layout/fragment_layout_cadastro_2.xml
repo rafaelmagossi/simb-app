@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +15,6 @@
     <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:paddingLeft="20dp"
@@ -28,11 +25,47 @@
         android:focusableInTouchMode="true">
 
         <TextView
+            android:id="@+id/textview_cadastro_genero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:text="Selecione o Gênero"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp" />
+
+        <RadioGroup
+            android:id="@+id/radiogroup_genero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/textview_cadastro_genero"
+            android:layout_marginTop="5dp">
+            <RadioButton
+                android:id="@+id/radiobutton_macho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Macho"
+                android:textSize="16dp"
+                android:checked="false" />
+            <RadioButton
+                android:id="@+id/radiobutton_femea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fêmea"
+                android:textSize="16dp"
+                android:checked="false"
+                android:layout_marginLeft="10dp"/>
+        </RadioGroup>
+
+
+        <TextView
             android:id="@+id/textview_cadastro_raca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/edittext_datanasc"
+            android:layout_below="@+id/radiogroup_genero"
             android:layout_marginTop="5dp"
             android:text="Selecione a Raça"
             android:textAllCaps="true"
@@ -122,8 +155,7 @@
             android:layout_below="@+id/textview_cadastro_peso"
             android:inputType="number"
             android:textAlignment="center"
-            android:textSize="30dp"
-            android:layout_marginBottom="100dp"/>
+            android:textSize="30dp" />
 
         <TextView
             android:id="@+id/textview_cadastro_arroba"
@@ -133,14 +165,13 @@
             android:layout_alignBottom="@id/edittext_peso"
             android:layout_marginLeft="0dp"
             android:layout_marginBottom="15dp"
-            android:text=" @"
-            android:textAllCaps="true"
+            android:text=" Kg"
+            android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <Button
-            android:id="@+id/button_proximo"
-            android:onClick="OnClickButtonProximo"
+            android:id="@+id/button_proximo2"
             android:background="@color/colorPrimary"
             android:textColor="@color/white"
             android:text="PROXIMO"

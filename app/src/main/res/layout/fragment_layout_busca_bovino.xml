@@ -35,19 +35,357 @@
                 android:layout_height="2dp"
                 android:layout_marginBottom="6dp"
                 android:layout_marginTop="8dp"
-                android:background="@color/gray" />
+                android:background="@color/colorPrimary" />
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
+                android:isScrollContainer="false">
 
-                <TextView
-                    android:id="@+id/tDesc"
+                <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_margin="8dp"/>
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="13dp"
+                    android:descendantFocusability="beforeDescendants"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+                    <TextView
+                        android:id="@+id/textview_busca_nome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/edittext_datanasc"
+                        android:layout_marginTop="5dp"
+                        android:text="Nome:  "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_nome_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_nome"
+                        android:layout_alignTop="@+id/textview_busca_nome" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_pai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textview_busca_nome"
+                        android:layout_marginTop="10dp"
+                        android:text="Pai: "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_pai_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_pai"
+                        android:layout_alignLeft="@+id/textview_busca_nome_bovino"
+                        android:layout_alignTop="@+id/textview_busca_pai"/>
+
+                    <TextView
+                        android:id="@+id/textview_busca_mae"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textview_busca_pai_bovino"
+                        android:layout_marginTop="10dp"
+                        android:text="Mae: "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_mae_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_mae"
+                        android:layout_alignTop="@+id/textview_busca_mae"
+                        android:layout_alignLeft="@+id/textview_busca_nome_bovino"/>
+
+                    <TextView
+                        android:id="@+id/textview_busca_datanasc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textview_busca_mae_bovino"
+                        android:layout_marginTop="10dp"
+                        android:text="Data Nascimeto:  "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_datanasc_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_datanasc"
+                        android:layout_alignBottom="@+id/textview_busca_datanasc" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_proprietario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textview_busca_datanasc"
+                        android:layout_marginTop="10dp"
+                        android:text="Proprietário:  "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_proprietario_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_proprietario"
+                        android:layout_alignBottom="@+id/textview_busca_proprietario" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_fazenda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textview_busca_proprietario"
+                        android:layout_marginTop="10dp"
+                        android:text="Fazenda:  "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_fazenda_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_fazenda"
+                        android:layout_alignBottom="@+id/textview_busca_fazenda" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_genero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textview_busca_fazenda"
+                        android:layout_marginTop="10dp"
+                        android:text="Gênero:  "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_genero_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_genero"
+                        android:layout_alignBottom="@+id/textview_busca_genero" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_raca"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textview_busca_genero"
+                        android:layout_marginTop="10dp"
+                        android:text="Raça:  "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_raca_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_raca"
+                        android:layout_alignBottom="@+id/textview_busca_raca" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_pelagem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textview_busca_raca"
+                        android:layout_marginTop="10dp"
+                        android:text="Pelagem:  "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp"
+                        android:layout_marginBottom="20dp"/>
+
+                    <TextView
+                        android:id="@+id/textview_busca_pelagem_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_pelagem"
+                        android:layout_alignBottom="@+id/textview_busca_pelagem" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/textview_busca_pelagem"
+                        android:background="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_peso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/textview_busca_pelagem"
+                        android:layout_marginTop="30dp"
+                        android:text="ultima pesagem:  "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_peso_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="33.89 @"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_peso"
+                        android:layout_alignBottom="@+id/textview_busca_peso" />
+
+                    <Button
+                        android:id="@+id/button_buscar_peso_ver"
+                        android:layout_width="90dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/textview_busca_peso_bovino"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/colorPrimary"
+                        android:text="Ver Todas"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/button_buscar_peso_incluir"
+                        android:layout_width="90dp"
+                        android:layout_height="40dp"
+                        android:layout_toRightOf="@+id/button_buscar_peso_ver"
+                        android:layout_alignBottom="@+id/button_buscar_peso_ver"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/colorPrimary"
+                        android:text="Incluir"
+                        android:textColor="@android:color/white" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/button_buscar_peso_ver"
+                        android:background="@color/colorPrimary" />
+
+
+                    <TextView
+                        android:id="@+id/textview_busca_ecc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/button_buscar_peso_ver"
+                        android:layout_marginTop="30dp"
+                        android:text="ultimo ECC:  "
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/textview_busca_ecc_bovino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:layout_toRightOf="@+id/textview_busca_ecc"
+                        android:layout_alignBottom="@+id/textview_busca_ecc" />
+
+                    <Button
+                        android:id="@+id/button_buscar_ecc_ver"
+                        android:layout_width="90dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/textview_busca_ecc"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/colorPrimary"
+                        android:text="Ver Todos"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/button_buscar_ecc_incluir"
+                        android:layout_width="90dp"
+                        android:layout_height="40dp"
+                        android:layout_toRightOf="@+id/button_buscar_ecc_ver"
+                        android:layout_alignBottom="@+id/button_buscar_ecc_ver"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/colorPrimary"
+                        android:text="Incluir"
+                        android:textColor="@android:color/white" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/button_buscar_ecc_ver"
+                        android:background="@color/colorPrimary" />
+
+                    <Button
+                        android:id="@+id/button_buscar_fichamatriz"
+                        android:layout_width="190dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/button_buscar_ecc_ver"
+                        android:layout_alignLeft="@+id/button_buscar_ecc_ver"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@color/colorPrimary"
+                        android:text="Ficha Matriz"
+                        android:textColor="@android:color/white" />
+
+                <!--<TextView-->
+                    <!--android:id="@+id/textview_desc"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="desc"-->
+                    <!--android:textColor="@color/colorPrimary"-->
+                    <!--android:layout_margin="8dp"/>-->
+
+
+
+                </RelativeLayout>
             </ScrollView>
         </LinearLayout>
     </android.support.v7.widget.CardView>

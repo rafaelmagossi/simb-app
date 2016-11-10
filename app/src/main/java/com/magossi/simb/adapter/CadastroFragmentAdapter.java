@@ -58,4 +58,11 @@ public class CadastroFragmentAdapter extends FragmentPagerAdapter {
             return new CadastroFragment3();
     }
 
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
+
+
 }

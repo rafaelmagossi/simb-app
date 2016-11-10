@@ -35,7 +35,6 @@ public class ScannerActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarPadrao.setNavigationIcon(R.drawable.ic_toolbar_voltar);
-
         imageView = (ImageView) findViewById(R.id.imv_scanner);
         imageView.setImageResource(R.drawable.scanner_activity);
 

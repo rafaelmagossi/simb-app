@@ -177,8 +177,7 @@
             android:layout_marginBottom="20dp"/>
 
             <Button
-                android:id="@+id/button_proximo"
-                android:onClick="OnClickButtonProximo"
+                android:id="@+id/button_proximo1"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:text="PROXIMO"

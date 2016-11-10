@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical"    >
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,7 +19,6 @@
     <fragment
         android:id="@+id/fragment_buscar_bovino"
         class="com.magossi.simb.fragment.BovinoFragment"
-        tools:layout="@layout/fragment_layout_busca_bovino"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar_busca"
@@ -29,6 +27,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+
+
+
+    <!--tools:layout="@layout/fragment_layout_busca_bovino"-->
+
 
 
 </LinearLayout>

@@ -66,12 +66,12 @@ public class BovinoAdapter extends RecyclerView.Adapter<BovinoAdapter.BovinoView
         Log.i("LOG", "onBindViewHolder()");
 
         // Atualiza a view
-        Bovino c = bovinos.get(position);
+        Bovino b = bovinos.get(position);
 
-        holder.tNome.setText(c.nome);
+        holder.textview_nome.setText(b.getNomeBovino());
         holder.progress.setVisibility(View.VISIBLE);
 
-        Picasso.with(context).load(c.urlFoto).fit().into(holder.img, new Callback() {
+        Picasso.with(context).load(b.getUrlFoto()).fit().into(holder.img, new Callback() {
             @Override
             public void onSuccess() {
                 holder.progress.setVisibility(View.GONE);
@@ -111,14 +111,14 @@ public class BovinoAdapter extends RecyclerView.Adapter<BovinoAdapter.BovinoView
 
     // ViewHolder com as views
     public static class BovinoViewHolder extends RecyclerView.ViewHolder {
-        public TextView tNome;
-        ImageView img;
-        ProgressBar progress;
+        public TextView textview_nome;
+        public ImageView img;
+        public ProgressBar progress;
 
         public BovinoViewHolder(View view) {
             super(view);
             // Cria as views para salvar no ViewHolder
-            tNome = (TextView) view.findViewById(R.id.text);
+            textview_nome = (TextView) view.findViewById(R.id.textview_item_nome);
             img = (ImageView) view.findViewById(R.id.img);
             progress = (ProgressBar) view.findViewById(R.id.progressImg);
         }

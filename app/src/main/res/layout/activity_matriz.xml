@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:card_view="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@color/gray"
+android:padding="12dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:isScrollContainer="false">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        card_view:cardBackgroundColor="@color/white"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="6dp">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:id="@+id/textview_inseminacoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="ULTIMAS ISEMINAÇÕES"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:id="@+id/cabecalho_inseminacao"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/colorPrimary"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textview_inseminacoes"
+            android:gravity="center_vertical|center_horizontal">
+
+
+            <TextView
+            android:id="@+id/textview_inseminacao_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="ID"
+            android:layout_marginLeft="20dp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/textview_inseminacao_datainseminacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DATA INSE."
+                android:textSize="14dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/textview_inseminacao_id"
+                android:layout_alignTop="@+id/textview_inseminacao_id" />
+
+            <TextView
+                android:id="@+id/textview_inseminacao_previsaoparto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PREV. PARTO"
+                android:textSize="14dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:layout_marginLeft="22dp"
+                android:layout_toRightOf="@+id/textview_inseminacao_datainseminacao"
+                android:layout_alignTop="@+id/textview_inseminacao_datainseminacao" />
+
+            <TextView
+                android:id="@+id/textview_inseminacao_parto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PARTO"
+                android:textSize="14dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/textview_inseminacao_previsaoparto"
+                android:layout_alignTop="@+id/textview_inseminacao_previsaoparto" />
+
+        </LinearLayout>
+
+            <ListView
+                android:id="@+id/listview_inseminacao"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/cabecalho_inseminacao"/>
+
+            <Button
+                android:id="@+id/button_iseminacao_inserir"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/listview_inseminacao"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimary"
+                android:text="incluir insemiacao"
+                android:textColor="@android:color/white" />
+
+            <!--<Button-->
+                <!--android:id="@+id/button_diagnostico_incluir"-->
+                <!--android:layout_width="160dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_toRightOf="@+id/button_iseminacao_inserir"-->
+                <!--android:layout_alignBottom="@+id/button_iseminacao_inserir"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:text="incluir diag.gestação"-->
+                <!--android:textColor="@android:color/white" />-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/button_iseminacao_inserir"
+            android:background="@color/colorPrimary" />
+
+        <!--&#455;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#4#45;-->
+
+        <TextView
+            android:id="@+id/textview_diagnostico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/button_iseminacao_inserir"
+            android:text="ULTIMOS DIAGNOSTICOS DE GESTAÇÃO"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:id="@+id/cabecalho_diagnostico"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/colorPrimary"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/textview_diagnostico"
+            android:gravity="center_vertical|center_horizontal">
+
+            <TextView
+                android:id="@+id/textview_diagnostico_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="ID"
+                android:layout_marginLeft="25dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/textview_diagnostico_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DATA DIAGNOSTICO"
+                android:textSize="14dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/textview_diagnostico_id"
+                android:layout_alignTop="@+id/textview_diagnostico_id" />
+
+            <TextView
+                android:id="@+id/textview_diagnostico_resultado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RESULTADO"
+                android:textSize="14dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:layout_marginLeft="22dp"
+                android:layout_toRightOf="@+id/textview_diagnostico_data"
+                android:layout_alignTop="@+id/textview_diagnostico_data" />
+
+
+        </LinearLayout>
+
+            <ListView
+                android:id="@+id/listview_diagnostico"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/cabecalho_diagnostico"/>
+
+            <Button
+                android:id="@+id/button_diagnostico_incluir"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/listview_diagnostico"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimary"
+                android:text="INCLUIR DIAG.GESTACÃO"
+                android:textColor="@android:color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/button_diagnostico_incluir"
+            android:background="@color/colorPrimary" />
+
+        <!--&#455;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#4#45;-->
+
+    <TextView
+        android:id="@+id/textview_parto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button_diagnostico_incluir"
+        android:text="ULTIMOS PARTOS"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16dp" />
+
+    <LinearLayout
+        android:id="@+id/cabecalho_parto"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textview_parto"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/textview_parto_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="ID"
+            android:layout_marginLeft="25dp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/textview_parto_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATA PARTO"
+            android:textSize="14dp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/textview_parto_id"
+            android:layout_alignTop="@+id/textview_parto_id" />
+
+        <TextView
+            android:id="@+id/textview_parto_bovino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BOVINO"
+            android:textSize="14dp"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/textview_diagnostico_data"
+            android:layout_alignTop="@+id/textview_diagnostico_data" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/textview_parto_inseminacao"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="INSE."-->
+            <!--android:textSize="14dp"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:layout_marginLeft="12dp"-->
+            <!--android:layout_toRightOf="@+id/textview_parto_bovino"-->
+            <!--android:layout_alignTop="@+id/textview_parto_bovino" />-->
+
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview_parto"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/cabecalho_parto"/>
+
+    <Button
+        android:id="@+id/button_parto_incluir"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/listview_parto"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimary"
+        android:text="INCLUIR PARTO"
+        android:textColor="@android:color/white" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/button_parto_incluir"
+        android:background="@color/colorPrimary" />
+
+
+</RelativeLayout>
+    </android.support.v7.widget.CardView>
+    </ScrollView>
+</RelativeLayout>

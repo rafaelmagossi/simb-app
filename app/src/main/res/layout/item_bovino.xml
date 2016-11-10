@@ -25,7 +25,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <!-- Foto do carro -->
+            <!-- Foto do Bovino -->
             <ImageView
                 android:id="@+id/img"
                 android:layout_width="130dp"
@@ -42,13 +42,13 @@
                 android:visibility="invisible" />
         </FrameLayout>
 
-        <!-- Nome carro -->
+        <!-- Nome Bovino -->
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/textview_item_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

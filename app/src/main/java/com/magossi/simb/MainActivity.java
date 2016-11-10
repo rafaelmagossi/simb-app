@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.magossi.simb.activity.BuscarActivity;
 import com.magossi.simb.activity.CadastroActivity;
 import com.magossi.simb.activity.ScannerActivity;
+import com.magossi.simb.task.TaskBuscaProprietarioList;
 
 public class MainActivity extends AppCompatActivity {
 

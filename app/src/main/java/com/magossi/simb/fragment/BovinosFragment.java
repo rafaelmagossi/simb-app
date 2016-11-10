@@ -98,7 +98,7 @@ public class BovinosFragment extends Fragment {
             @Override
             public void onClickBovino(View view, int idx) {
                 Bovino b = bovinos.get(idx);
-               // Toast.makeText(getContext(), "Bovino: " + c.nome, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "Bovino: " + b.getNomeBovino(), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getContext(), BovinoActivity.class);
                 intent.putExtra("bovino", b);
