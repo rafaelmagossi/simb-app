@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -22,6 +23,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.github.pinball83.maskededittext.MaskedEditText;
 import com.magossi.simb.R;
 import com.magossi.simb.activity.CadastroActivity;
 import com.magossi.simb.domain.Bovino;
@@ -65,10 +67,10 @@ public class CadastroFragment1 extends Fragment implements  ProprietarioListInte
     private Long proprietarioId;
     private Long fazendaId;
 
-    private EditText editTextNomeBovino;
-    private EditText editTextNomePai;
-    private EditText editTextNomeMae;
-    private EditText editTextDataNasc;
+    private TextInputLayout editTextNomeBovino;
+    private TextInputLayout editTextNomePai;
+    private TextInputLayout editTextNomeMae;
+    private MaskedEditText editTextDataNasc;
     private Spinner spinnerProprietario;
     private Spinner spinnerFazenda;
     private Button buttonProximo1;
@@ -102,13 +104,15 @@ public class CadastroFragment1 extends Fragment implements  ProprietarioListInte
         View view = inflater.inflate(R.layout.fragment_layout_cadastro_1, container, false);
         setRetainInstance(true);
 
-        editTextNomeBovino = (EditText) view.findViewById(R.id.edittext_cadastro_nome);
-        editTextNomePai =(EditText) view.findViewById(R.id.edittext_cadastro_pai);
-        editTextNomeMae = (EditText) view.findViewById(R.id.edittext_cadastro_mae);
-        editTextDataNasc = (EditText) view.findViewById(R.id.edittext_datanasc);
+        editTextNomeBovino = (TextInputLayout) view.findViewById(R.id.input_layout_nome);
+        editTextNomePai =(TextInputLayout) view.findViewById(R.id.input_layout_pai);
+        editTextNomeMae = (TextInputLayout) view.findViewById(R.id.input_layout_mae);
+        editTextDataNasc = (MaskedEditText) view.findViewById(R.id.edittext_datanasc);
         buttonProximo1 = (Button) view.findViewById(R.id.button_proximo1);
         spinnerProprietario = (Spinner) view.findViewById(R.id.spinner_proprietario);
         spinnerFazenda = (Spinner) view.findViewById(R.id.spinner_fazenda);
+
+
 
 
 
@@ -116,34 +120,50 @@ public class CadastroFragment1 extends Fragment implements  ProprietarioListInte
             @Override
             public void onClick(View v) {
 
-                nomeBovino = editTextNomeBovino.getText().toString();
-                nomePai = editTextNomePai.getText().toString();
-                nomeMae = editTextNomeMae.getText().toString();
-                try {
-                    dataNasc = formataStringToDate(editTextDataNasc.getText().toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                nomePai = editTextNomePai.getEditText().getText().toString();
+                nomeMae = editTextNomeMae.getEditText().getText().toString();
+                nomeBovino = editTextNomeBovino.getEditText().getText().toString();
+
+                if(nomeBovino.isEmpty()){
+                    editTextNomeBovino.getEditText().setError("Insira um Nome");
+                    Toast.makeText(getContext(), "Preencha Todos os Campos" , Toast.LENGTH_SHORT).show();
+                }else if ( nomePai.isEmpty()){
+                    editTextNomePai.getEditText().setError("Insira um Nome");
+                    Toast.makeText(getContext(), "Preencha Todos os Campos" , Toast.LENGTH_SHORT).show();
+                }else if(nomeMae.isEmpty()){
+                    editTextNomeMae.getEditText().setError("Insira um Nome");
+                    Toast.makeText(getContext(), "Preencha Todos os Campos" , Toast.LENGTH_SHORT).show();
+                }else if(editTextDataNasc.getUnmaskedText().toString().length() < 8) {
+                    editTextDataNasc.setError("Insira uma Data");
+                    Toast.makeText(getContext(), "Preencha a Data" , Toast.LENGTH_SHORT).show();
+                }else{
+                    editTextNomeBovino.setErrorEnabled(false);
+                    editTextNomePai.setErrorEnabled(false);
+                    editTextNomeMae.setErrorEnabled(false);
+
+
+                    try {
+                        dataNasc = formataStringToDate(editTextDataNasc.getText().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(getContext(), "Erro Fomato Data" , Toast.LENGTH_SHORT).show();
+                    }
+
+                    cadastroActivity.getBovino().setNomeBovino(nomeBovino);
+                    cadastroActivity.getBovino().setPai(nomePai);
+                    cadastroActivity.getBovino().setMae(nomeMae);
+                    cadastroActivity.getBovino().setDataNascimento(dataNasc);
+                    cadastroActivity.getBovino().setProprietario(proprietariosList.get(proprietarioId.intValue()));
+                    cadastroActivity.getBovino().setFazenda(fazendasList.get(fazendaId.intValue()));
+
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.layout_cadastro, cadastroFragment2 , "FRAG2");
+                    ft.commit();
+
                 }
 
 
 
-                cadastroActivity.getBovino().setNomeBovino(nomeBovino);
-                cadastroActivity.getBovino().setPai(nomePai);
-                cadastroActivity.getBovino().setMae(nomeMae);
-                cadastroActivity.getBovino().setDataNascimento(dataNasc);
-                cadastroActivity.getBovino().setProprietario(proprietariosList.get(proprietarioId.intValue()));
-                cadastroActivity.getBovino().setFazenda(fazendasList.get(fazendaId.intValue()));
-
-
-
-                Bundle bundle = new Bundle();
-                bundle.putString("nome", "xibs");
-
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-
-               // cadastroFragment2.setArguments(bundle);
-                ft.replace(R.id.layout_cadastro, cadastroFragment2 , "FRAG2");
-                ft.commit();
             }
         });
 

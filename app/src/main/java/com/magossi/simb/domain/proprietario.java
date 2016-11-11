@@ -10,15 +10,13 @@ public class Proprietario implements Serializable {
 
 
     private Long idProprietario;
-
-
     private String nomeProprietario;
-
-
     private Date dataInclusao = new Date();
-
-
     private Boolean status;
+
+    public Proprietario(){
+        status = true;
+    }
 
 
     public Long getIdProprietario() {

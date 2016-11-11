@@ -10,12 +10,13 @@ public class Raca implements Serializable {
 
 
     private Long idRaca;
-
     private String nomeRaca;
-
-    private Date dataInclusao = new Date();
-
+    private Date dataInclusao;
     private Boolean status;
+
+    public Raca(){
+        status = true;
+    }
 
 
     public Long getIdRaca() {

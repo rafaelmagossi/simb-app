@@ -1,6 +1,7 @@
 package com.magossi.simb.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,10 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.magossi.simb.MainActivity;
 import com.magossi.simb.R;
 import com.magossi.simb.activity.CadastroActivity;
+import com.magossi.simb.interfaces.BovinoObjInterface;
+import com.magossi.simb.task.TaskSalvaBobinoObj;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,26 +26,34 @@ import java.util.Date;
 /**
  * Created by RafaelMq on 07/09/2016.
  */
-public class CadastroFragment3 extends Fragment {
+public class CadastroFragment3 extends Fragment implements BovinoObjInterface {
 
     private CadastroActivity cadastroActivity;
 
-    TextView textview_nome;
-    TextView textview_pai;
-    TextView textview_mae;
-    TextView textview_datanasc;
-    TextView textview_proprietario;
-    TextView textview_fazenda;
-    TextView textview_genero;
-    TextView textview_raca;
-    TextView textview_pelagem;
-    TextView textview_peso;
-    TextView textview_ecc;
+
+    private TextView textview_nome;
+    private TextView textview_pai;
+    private TextView textview_mae;
+    private TextView textview_datanasc;
+    private TextView textview_proprietario;
+    private TextView textview_fazenda;
+    private TextView textview_genero;
+    private TextView textview_raca;
+    private TextView textview_pelagem;
+    private TextView textview_peso;
+    private TextView textview_ecc;
+
+    private Button buttonConcluir;
+    TaskSalvaBobinoObj taskSalvaBobinoObj;
 
     @Override
     public void onAttach(Activity myActivity) {
         super.onAttach(myActivity);
         this.cadastroActivity= (CadastroActivity) myActivity;
+
+    }
+
+    public CadastroFragment3(){
 
     }
 
@@ -50,7 +63,9 @@ public class CadastroFragment3 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_layout_cadastro_3, container, false);
         Log.i("fragments", "-> onCreateFragment-3: "+getActivity().getClass().getName() );
 
+        taskSalvaBobinoObj = new TaskSalvaBobinoObj(this.getContext(),this);
 
+        buttonConcluir = (Button) view.findViewById(R.id.button_concluir);
 
         textview_nome = (TextView) view.findViewById(R.id.textview_concluir_nome_bovino);
         textview_pai = (TextView) view.findViewById(R.id.textview_concluir_pai_bovino);
@@ -75,16 +90,23 @@ public class CadastroFragment3 extends Fragment {
 
         textview_proprietario.setText(cadastroActivity.getBovino().getProprietario().getNomeProprietario());
         textview_fazenda.setText(cadastroActivity.getBovino().getFazenda().getNomeFazenda());
-        textview_genero.setText("Macho");
-        textview_raca.setText("Nelore");
-        textview_pelagem.setText("Cinza-Claro");
-        textview_peso.setText("33.86" + " arrobas.");
-        textview_ecc.setText("7");
+        String auxString = cadastroActivity.getBovino().getGenero().equals(true) ? "Macho" : "Fêmea";
+        textview_genero.setText(auxString);
+        textview_raca.setText(cadastroActivity.getBovino().getRaca().getNomeRaca());
+        textview_pelagem.setText(cadastroActivity.getBovino().getPelagem().getNomePelagem());
+        textview_ecc.setText(cadastroActivity.getBovino().getEcc().get(0).getEscore()+"");
+        textview_peso.setText(cadastroActivity.getBovino().getPeso().get(0).getPeso() + "  Kilos");
 
 
+        buttonConcluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                taskSalvaBobinoObj.execute(cadastroActivity.getBovino());
 
 
-
+            }
+        });
 
         return view;
     }
@@ -112,5 +134,13 @@ public class CadastroFragment3 extends Fragment {
             throw e;
         }
         return Auxdate;
+    }
+
+    @Override
+    public void depoisSalvarBovino(String url, String erro) {
+
+        Intent intent = new Intent(getContext(),MainActivity.class);
+        startActivity(intent);
+
     }
 }

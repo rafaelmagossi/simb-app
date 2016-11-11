@@ -13,8 +13,12 @@ public class Ecc implements Serializable {
 
     private Long idECC;
     private Integer escore;
-    private Date dataInclusao = new Date();
+    private Date dataInclusao;
     private Boolean status;
+
+    public Ecc(){
+        status = true;
+    }
 
 
     public Long getIdECC() {

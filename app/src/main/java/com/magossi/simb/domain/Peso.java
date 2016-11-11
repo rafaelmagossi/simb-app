@@ -16,14 +16,14 @@ public class Peso implements Serializable {
 
 
     private Long idPeso;
-
     private Date dataPesagem;
-
     private Double peso;
-
-    private Date dataInclusao = new Date();
-
+    private Date dataInclusao;
     private Boolean status;
+
+    public Peso(){
+        status = true;
+    }
 
 
     public Long getIdPeso() {

@@ -26,8 +26,12 @@ public class Bovino implements Serializable{
     private List<Peso> peso;
     private Boolean status;
     private String urlFoto;
-
     public String desc;
+
+
+    public Bovino(){
+        status = true;
+    }
 
     public Long getIdBovino() {
         return idBovino;

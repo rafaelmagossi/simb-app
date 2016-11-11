@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="Macho"
                 android:textSize="16dp"
-                android:checked="false" />
+                android:checked="true" />
             <RadioButton
                 android:id="@+id/radiobutton_femea"
                 android:layout_width="wrap_content"
@@ -146,10 +146,9 @@
 
         <com.github.pinball83.maskededittext.MaskedEditText
             android:id="@+id/edittext_peso"
-            app:mask="**.*"
+            app:mask="***.*"
             app:notMaskedSymbol="*"
-
-            android:layout_width="70dp"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/textview_cadastro_peso"

@@ -13,18 +13,14 @@ public class Fazenda implements Serializable {
 
 
     private Long idFazenda;
-
-
     private String nomeFazenda;
-
-
     private String enderecoFazenda;
-
-
-    private Date dataInclusao = new Date();
-
-
+    private Date dataInclusao;
     private Boolean status;
+
+    public Fazenda(){
+        status = true;
+    }
 
 
     public Long getIdFazenda() {

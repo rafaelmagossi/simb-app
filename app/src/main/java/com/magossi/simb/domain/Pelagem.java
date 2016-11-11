@@ -13,8 +13,12 @@ public class Pelagem implements Serializable {
 
     private Long idPelagem;
     private String nomePelagem;
-    private Date dataInclusao = new Date();
+    private Date dataInclusao;
     private Boolean status;
+
+    public Pelagem(){
+        status = true;
+    }
 
 
     public Long getIdPelagem() {
