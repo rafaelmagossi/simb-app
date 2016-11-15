@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import com.magossi.simb.domain.Bovino;
+import com.magossi.simb.domain.bovino.Bovino;
 import com.magossi.simb.R;
 
 import java.util.List;
@@ -67,7 +67,6 @@ public class BovinoAdapter extends RecyclerView.Adapter<BovinoAdapter.BovinoView
 
         // Atualiza a view
         Bovino b = bovinos.get(position);
-
         holder.textview_nome.setText(b.getNomeBovino());
         holder.progress.setVisibility(View.VISIBLE);
 

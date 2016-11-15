@@ -13,25 +13,22 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.github.pinball83.maskededittext.MaskedEditText;
 import com.magossi.simb.R;
 import com.magossi.simb.activity.CadastroActivity;
-import com.magossi.simb.domain.Ecc;
-import com.magossi.simb.domain.Pelagem;
-import com.magossi.simb.domain.Peso;
-import com.magossi.simb.domain.Raca;
-import com.magossi.simb.interfaces.EccListInterface;
+import com.magossi.simb.domain.bovino.Ecc;
+import com.magossi.simb.domain.bovino.Pelagem;
+import com.magossi.simb.domain.bovino.Peso;
+import com.magossi.simb.domain.bovino.Raca;
 import com.magossi.simb.interfaces.PelagemListInterface;
 import com.magossi.simb.interfaces.RacaListInterface;
-import com.magossi.simb.task.TaskBuscaEccList;
-import com.magossi.simb.task.TaskBuscaPelagemList;
-import com.magossi.simb.task.TaskBuscaRacaList;
+import com.magossi.simb.task.buscar.TaskBuscaEccBovinoList;
+import com.magossi.simb.task.buscar.TaskBuscaPelagemList;
+import com.magossi.simb.task.buscar.TaskBuscaRacaList;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,7 +45,6 @@ public class CadastroFragment2 extends Fragment implements RacaListInterface, Pe
 
     private TaskBuscaRacaList taskBuscaRacaList;
     private TaskBuscaPelagemList taskBuscaPelagemList;
-    private TaskBuscaEccList taskBuscaEccList;
 
     private List<Raca> racasList;
     private List<Pelagem> pelagemsList;
@@ -145,7 +141,7 @@ public class CadastroFragment2 extends Fragment implements RacaListInterface, Pe
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 eccId = id+1;
-                //Toast.makeText(getContext(), ""+(id+1), Toast.LENGTH_LONG).show();
+
             }
 
             @Override
@@ -182,13 +178,18 @@ public class CadastroFragment2 extends Fragment implements RacaListInterface, Pe
 
                     eccsNovaLista.add(0, eccEscolhido);
                     pesosNovaLista.add(0, pesoLido);
-                    //Toast.makeText(getContext(), eccsNovaLista.get(1).getIdECC().toString(), Toast.LENGTH_LONG).show();
+
 
                     cadastroActivity.getBovino().setGenero(genero);
                     cadastroActivity.getBovino().setRaca(racasList.get(racaId.intValue()));
                     cadastroActivity.getBovino().setPelagem(pelagemsList.get(pelagemId.intValue()));
                     cadastroActivity.getBovino().setEcc(eccsNovaLista);
                     cadastroActivity.getBovino().setPeso(pesosNovaLista);
+                    if(!genero){
+                        cadastroActivity.getBovino().setUrlFoto("http://www.colonialagropecuaria.com.br/_upload/_original/023c2bc3a26004145cec3db2373e8ca7.jpg");
+                    }else{
+                        cadastroActivity.getBovino().setUrlFoto("http://comprerural.com.s3-us-west-2.amazonaws.com/wp-content/uploads/2015/11/20202430/boi_touro_backup_.jpg");
+                    }
 
 
                     FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
@@ -232,8 +233,6 @@ public class CadastroFragment2 extends Fragment implements RacaListInterface, Pe
         taskBuscaPelagemList = new TaskBuscaPelagemList(this.getContext(), this.getActivity(), this);
         taskBuscaPelagemList.execute("/pelagem", "");
 
-//        taskBuscaEccList = new TaskBuscaEccList(this.getContext(), this.getActivity(), this);
-//        taskBuscaEccList.execute("/ecc", "");
     }
 
     @Override
@@ -281,26 +280,4 @@ public class CadastroFragment2 extends Fragment implements RacaListInterface, Pe
         }
     }
 
-//    @Override
-//    public void depoisBuscaEccs(List<Ecc> eccs, String erro) {
-//
-//        Integer[] ec = new Integer[eccs.size()];
-//
-//        for (int i=0 ; i<eccs.size() ; i++){
-//            if(eccs.get(i).getStatus()) {
-//                ec[i] =  eccs.get(i).getEscore();
-//            }
-//        }
-//        this.eccsList = eccs;
-//        this.eccs = ec;
-//
-//        try{
-//
-//            ArrayAdapter<Integer>  adapterSpinnerEcc = new ArrayAdapter<Integer>(this.getActivity(), android.R.layout.simple_spinner_item, ec);
-//            adapterSpinnerEcc.setDropDownViewResource(android.R.layout.simple_list_item_checked);
-//            spinnerEcc.setAdapter(adapterSpinnerEcc);
-//        }catch (Exception e){
-//
-//        }
-//    }
 }

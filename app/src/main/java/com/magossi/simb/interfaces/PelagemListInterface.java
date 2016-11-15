@@ -1,6 +1,6 @@
 package com.magossi.simb.interfaces;
 
-import com.magossi.simb.domain.Pelagem;
+import com.magossi.simb.domain.bovino.Pelagem;
 
 import java.util.List;
 

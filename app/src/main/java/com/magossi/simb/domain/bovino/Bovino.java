@@ -1,8 +1,14 @@
-package com.magossi.simb.domain;
+package com.magossi.simb.domain.bovino;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+
 
 /**
  * Created by RafaelMq on 26/09/2016.
@@ -25,12 +31,21 @@ public class Bovino implements Serializable{
     private List<Ecc> ecc;
     private List<Peso> peso;
     private Boolean status;
+    private Date dataInclusao;
     private String urlFoto;
-    public String desc;
+
 
 
     public Bovino(){
         status = true;
+    }
+
+    public Date getDataInclusao() {
+        return dataInclusao;
+    }
+
+    public void setDataInclusao(Date dataInclusao) {
+        this.dataInclusao = dataInclusao;
     }
 
     public Long getIdBovino() {

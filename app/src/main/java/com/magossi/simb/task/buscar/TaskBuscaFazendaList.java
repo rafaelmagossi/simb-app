@@ -1,4 +1,4 @@
-package com.magossi.simb.task;
+package com.magossi.simb.task.buscar;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -6,10 +6,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.magossi.simb.domain.Fazenda;
-import com.magossi.simb.domain.Proprietario;
+import com.magossi.simb.domain.bovino.Fazenda;
+import com.magossi.simb.extra.MainConfig;
 import com.magossi.simb.interfaces.FazendaListInterface;
-import com.magossi.simb.interfaces.ProprietarioListInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
@@ -57,7 +56,8 @@ public class TaskBuscaFazendaList extends AsyncTask<String, String, List<Fazenda
 
 
             Fazenda[] f;
-            String URL = "http://192.168.0.100:8080/"
+            //String URL = "http://192.168.0.100:8080/"
+            String URL = MainConfig.getUrl()
                     + params[0]
                     + "/{opcao}";
 

@@ -1,6 +1,6 @@
 package com.magossi.simb.interfaces;
 
-import com.magossi.simb.domain.Proprietario;
+import com.magossi.simb.domain.bovino.Proprietario;
 
 import java.util.List;
 

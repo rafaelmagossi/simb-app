@@ -1,4 +1,4 @@
-package com.magossi.simb.task;
+package com.magossi.simb.task.buscar;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -6,9 +6,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.magossi.simb.domain.Ecc;
-import com.magossi.simb.interfaces.EccListInterface;
-import com.magossi.simb.interfaces.RacaListInterface;
+import com.magossi.simb.domain.bovino.Pelagem;
+import com.magossi.simb.extra.MainConfig;
+import com.magossi.simb.interfaces.PelagemListInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
@@ -20,20 +20,20 @@ import java.util.List;
 /**
  * Created by RafaelMq on 08/11/2016.
  */
-public class TaskBuscaEccList extends AsyncTask<String, String, List<Ecc>> {
+public class TaskBuscaPelagemList extends AsyncTask<String, String, List<Pelagem>> {
 
 
     private HttpClientErrorException erro;
     private Context context;
-    private EccListInterface eccListInterface;
+    private PelagemListInterface pelagemListInterface;
     private ProgressDialog progress;
     private Activity activity;
 
 
-    public TaskBuscaEccList(Context context, Activity activity, EccListInterface eccListInterface) {
+    public TaskBuscaPelagemList(Context context, Activity activity, PelagemListInterface pelagemListInterface) {
         this.context = context;
         this.activity = activity;
-        this.eccListInterface = eccListInterface;
+        this.pelagemListInterface = pelagemListInterface;
 
 
 
@@ -50,10 +50,11 @@ public class TaskBuscaEccList extends AsyncTask<String, String, List<Ecc>> {
 
 
     @Override
-    protected List<Ecc> doInBackground(String... params) {
-        List<Ecc> eccs = null;
-        Ecc[] ec;
-        String URL = "http://192.168.0.100:8080/"
+    protected List<Pelagem> doInBackground(String... params) {
+        List<Pelagem> pelagens = null;
+        Pelagem[] p;
+        //String URL = "http://192.168.0.100:8080/"
+        String URL = MainConfig.getUrl()
                 + params[0]
                 + "/{opcao}";
 
@@ -63,8 +64,8 @@ public class TaskBuscaEccList extends AsyncTask<String, String, List<Ecc>> {
             String url = URL.replace("{opcao}", params[1]);
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-            ec = restTemplate.getForObject(url, Ecc[].class);
-            eccs = Arrays.asList(ec);
+            p = restTemplate.getForObject(url, Pelagem[].class);
+            pelagens = Arrays.asList(p);
             publishProgress("Pronto");
 
         } catch (HttpClientErrorException e) {
@@ -75,7 +76,7 @@ public class TaskBuscaEccList extends AsyncTask<String, String, List<Ecc>> {
             Log.e("http", ex.getMessage(), ex);
         }
 
-        return (eccs);
+        return (pelagens);
 
     }
 
@@ -86,16 +87,16 @@ public class TaskBuscaEccList extends AsyncTask<String, String, List<Ecc>> {
     }
 
     @Override
-    protected void onPostExecute(List<Ecc> params) {
+    protected void onPostExecute(List<Pelagem> params) {
 
         progress.setMessage("Pronto");
 
         if(params != null && erro == null){
-            eccListInterface.depoisBuscaEccs(params,null);
+            pelagemListInterface.depoisBuscaPelagens(params,null);
             progress.dismiss();
 
         }else if(params == null && erro != null){
-            eccListInterface.depoisBuscaEccs(params,erro.getStatusCode().toString());
+            pelagemListInterface.depoisBuscaPelagens(params,erro.getStatusCode().toString());
             progress.dismiss();
             //Toast.makeText(this.context, "Nao Encontrado", Toast.LENGTH_SHORT).show();
         }

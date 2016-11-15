@@ -1,5 +1,9 @@
-package com.magossi.simb.domain;
+package com.magossi.simb.domain.bovino;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,7 +13,7 @@ import java.util.Date;
  */
 
 
-public class Fazenda implements Serializable {
+public class Fazenda implements Serializable  {
 
 
     private Long idFazenda;
@@ -17,6 +21,7 @@ public class Fazenda implements Serializable {
     private String enderecoFazenda;
     private Date dataInclusao;
     private Boolean status;
+
 
     public Fazenda(){
         status = true;

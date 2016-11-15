@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray"
+    android:padding="6dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardCornerRadius="2dp"
+            card_view:cardElevation="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp">
+
+                <TextView
+                    android:id="@+id/textview_vertodos_peso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/button_iseminacao_inserir"
+                    android:text="ULTIMAS PESAGENS"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:id="@+id/cabecalho_vertodos_peso"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/textview_vertodos_peso"
+                    android:gravity="center_vertical|center_horizontal">
+
+
+                    <TextView
+                        android:id="@+id/textview_vertodos_peso_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DATA PESAGEM"
+                        android:textSize="14dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/textview_diagnostico_id"
+                        android:layout_alignTop="@+id/textview_diagnostico_id" />
+
+                    <TextView
+                        android:id="@+id/textview_vertodos_peso_valor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PESO"
+                        android:textSize="14dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="60dp"
+                        android:layout_toRightOf="@+id/textview_vertodos_peso_data"
+                        android:layout_alignTop="@+id/textview_vertodos_peso_data" />
+
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listview_vertodos_peso"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/cabecalho_vertodos_peso"/>
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </ScrollView>
+    </RelativeLayout>

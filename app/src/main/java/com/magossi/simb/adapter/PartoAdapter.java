@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.magossi.simb.R;
-import com.magossi.simb.domain.Parto;
+import com.magossi.simb.domain.matriz.Parto;
 
 import java.util.List;
 

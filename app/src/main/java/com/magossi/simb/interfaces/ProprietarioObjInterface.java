@@ -1,6 +1,6 @@
 package com.magossi.simb.interfaces;
 
-import com.magossi.simb.domain.Proprietario;
+import com.magossi.simb.domain.bovino.Proprietario;
 
 /**
  * Created by RafaelMq on 10/11/2016.

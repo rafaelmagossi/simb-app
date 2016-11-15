@@ -1,4 +1,4 @@
-package com.magossi.simb.domain;
+package com.magossi.simb.domain.matriz;
 
 import java.io.Serializable;
 import java.util.ArrayList;

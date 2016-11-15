@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:isScrollContainer="false"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentStart="true">
+
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="13dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:id="@+id/input_layout_dado"-->
+            <!--android:layout_width="150dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:maxLines="2">-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/edittext_busca_dado"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Dado da Busca" />-->
+
+
+        <!--</android.support.design.widget.TextInputLayout>-->
+
+        <Spinner
+            android:id="@+id/spinner_dado"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:background="@drawable/spinner"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <!--<Button-->
+            <!--android:id="@+id/button_buscar_pai"-->
+            <!--android:layout_width="70dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_alignBottom="@+id/input_layout_pai"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="buscar"-->
+            <!--android:textColor="@android:color/white" />-->
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,7 +1,5 @@
 package com.magossi.simb.activity;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,20 +8,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.magossi.simb.R;
 import com.magossi.simb.adapter.DiagnosticoAdapter;
 import com.magossi.simb.adapter.InseminacaoAdapter;
 import com.magossi.simb.adapter.PartoAdapter;
-import com.magossi.simb.domain.Bovino;
-import com.magossi.simb.domain.DiagnosticoGestacao;
-import com.magossi.simb.domain.Inseminacao;
-import com.magossi.simb.domain.Parto;
+import com.magossi.simb.domain.matriz.DiagnosticoGestacao;
+import com.magossi.simb.domain.matriz.Inseminacao;
+import com.magossi.simb.domain.matriz.Parto;
 
 import java.util.List;
 

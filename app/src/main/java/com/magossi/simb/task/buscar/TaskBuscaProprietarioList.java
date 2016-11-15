@@ -1,4 +1,4 @@
-package com.magossi.simb.task;
+package com.magossi.simb.task.buscar;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -7,9 +7,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.magossi.simb.domain.Proprietario;
+import com.magossi.simb.domain.bovino.Proprietario;
+import com.magossi.simb.extra.MainConfig;
 import com.magossi.simb.interfaces.ProprietarioListInterface;
 
 
@@ -62,7 +62,8 @@ public class TaskBuscaProprietarioList extends AsyncTask<String, String, List<Pr
         List<Proprietario> proprietarios = null;
 
             Proprietario[] p;
-            String URL = "http://192.168.0.100:8080/"
+            //String URL = "http://192.168.0.100:8080/"
+            String URL = MainConfig.getUrl()
                     + params[0]
                     + "/{opcao}";
 

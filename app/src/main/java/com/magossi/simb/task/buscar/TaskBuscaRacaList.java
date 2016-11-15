@@ -1,39 +1,40 @@
-package com.magossi.simb.task;
+package com.magossi.simb.task.buscar;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.magossi.simb.domain.Proprietario;
-import com.magossi.simb.interfaces.ProprietarioObjInterface;
+import com.magossi.simb.domain.bovino.Raca;
+import com.magossi.simb.extra.MainConfig;
+import com.magossi.simb.interfaces.RacaListInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
- * Created by RafaelMq on 10/11/2016.
+ * Created by RafaelMq on 08/11/2016.
  */
-public class TaskBuscaProprietarioObj extends AsyncTask<String, String, Proprietario> {
+public class TaskBuscaRacaList extends AsyncTask<String, String, List<Raca>> {
 
 
     private HttpClientErrorException erro;
     private Context context;
-    private ProprietarioObjInterface proprietarioObjInterface;
+    private RacaListInterface racaListInterface;
     private ProgressDialog progress;
     private Activity activity;
-    boolean cancelado = false;
 
 
-    public TaskBuscaProprietarioObj(Context context, Activity activity, ProprietarioObjInterface proprietarioObjInterface) {
+    public TaskBuscaRacaList(Context context, Activity activity, RacaListInterface racaListInterface) {
         this.context = context;
         this.activity = activity;
-        this.proprietarioObjInterface = proprietarioObjInterface;
+        this.racaListInterface = racaListInterface;
 
 
 
@@ -44,19 +45,23 @@ public class TaskBuscaProprietarioObj extends AsyncTask<String, String, Propriet
         progress = new ProgressDialog(context);
         progress.setMessage("Carregando Dados");
         progress.show();
+
+
+
+
         //super.onPreExecute();
     }
 
 
-
-
     @Override
-    protected Proprietario doInBackground(String... params) {
-
-        Proprietario proprietario = null;
+    protected List<Raca> doInBackground(String... params) {
 
 
-        String URL = "http://192.168.0.100:8080/"
+
+        List<Raca> racas = null;
+        Raca[] r;
+        //String URL = "http://192.168.0.100:8080/"
+        String URL = MainConfig.getUrl()
                 + params[0]
                 + "/{opcao}";
 
@@ -66,11 +71,12 @@ public class TaskBuscaProprietarioObj extends AsyncTask<String, String, Propriet
             String url = URL.replace("{opcao}", params[1]);
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-            proprietario = restTemplate.getForObject(url, Proprietario.class);
+            r = restTemplate.getForObject(url, Raca[].class);
+            racas = Arrays.asList(r);
             publishProgress("Pronto");
 
 
-        } catch (ResourceAccessException ex1) {
+        } catch (ResourceAccessException ex1){
             Log.i("http", "Sem Conexão Servidor - ");
 
 
@@ -84,9 +90,8 @@ public class TaskBuscaProprietarioObj extends AsyncTask<String, String, Propriet
 
 
         Log.i("thread", "-> TaskBuscaProprietarioList - doInBackground ");
+        return (racas);
 
-
-        return (proprietario);
     }
 
 
@@ -96,31 +101,20 @@ public class TaskBuscaProprietarioObj extends AsyncTask<String, String, Propriet
     }
 
     @Override
-    protected void onPostExecute(Proprietario params) {
+    protected void onPostExecute(List<Raca> params) {
 
         progress.setMessage("Pronto");
 
         if(params != null && erro == null){
-            proprietarioObjInterface.depoisBuscaProp(params,null);
+            racaListInterface.depoisBuscaRaca(params,null);
             //proprietarioInterface.depoisBusca(params,null);
             progress.dismiss();
 
         }else if(params == null && erro != null){
-            proprietarioObjInterface.depoisBuscaProp(params,erro.getStatusCode().toString());
+            racaListInterface.depoisBuscaRaca(params,erro.getStatusCode().toString());
             //proprietarioInterface.depoisBusca(params,erro.getStatusCode().toString());
             progress.dismiss();
             //Toast.makeText(this.context, "Nao Encontrado", Toast.LENGTH_SHORT).show();
-
-
         }
     }
-
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
 }
