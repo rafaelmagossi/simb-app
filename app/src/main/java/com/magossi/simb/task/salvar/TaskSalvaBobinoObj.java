@@ -1,4 +1,4 @@
-package com.magossi.simb.task;
+package com.magossi.simb.task.salvar;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -6,7 +6,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.magossi.simb.domain.Bovino;
+import com.magossi.simb.domain.bovino.Bovino;
+import com.magossi.simb.extra.MainConfig;
 import com.magossi.simb.interfaces.BovinoObjInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -44,7 +45,8 @@ public class TaskSalvaBobinoObj extends AsyncTask<Bovino, String, String> {
     @Override
     protected String doInBackground(Bovino... params) {
         String urlBovino = null;
-        String URL = "http://192.168.0.100:8080/bovino";
+        //String URL = "http://192.168.0.100:8080/bovino";
+        String URL = MainConfig.getUrl()+"bovino";
 
         try{
             erro = null;

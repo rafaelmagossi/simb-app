@@ -1,6 +1,5 @@
 package com.magossi.simb.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -9,17 +8,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.magossi.simb.MainActivity;
 import com.magossi.simb.R;
 import com.magossi.simb.adapter.CadastroFragmentAdapter;
-import com.magossi.simb.domain.Bovino;
+import com.magossi.simb.domain.bovino.Bovino;
 import com.magossi.simb.fragment.CadastroFragment1;
 import com.magossi.simb.fragment.CadastroFragment2;
 import com.magossi.simb.fragment.CadastroFragment3;

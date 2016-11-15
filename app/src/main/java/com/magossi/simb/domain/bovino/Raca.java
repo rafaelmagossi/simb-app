@@ -1,4 +1,4 @@
-package com.magossi.simb.domain;
+package com.magossi.simb.domain.bovino;
 
 import java.io.Serializable;
 import java.util.Date;

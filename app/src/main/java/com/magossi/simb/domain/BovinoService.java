@@ -2,6 +2,12 @@ package com.magossi.simb.domain;
 
 import android.content.Context;
 
+import com.magossi.simb.domain.bovino.Bovino;
+import com.magossi.simb.domain.bovino.Fazenda;
+import com.magossi.simb.domain.bovino.Pelagem;
+import com.magossi.simb.domain.bovino.Proprietario;
+import com.magossi.simb.domain.bovino.Raca;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -57,7 +63,7 @@ public class BovinoService {
                 b.setGenero(false);
                 b.setRaca(raca);   /* "Nelore - B" + i; */
                 b.setPelagem(pelagem);   /* = "Branca - B" + i; */
-                b.desc = "Descrição - B" + i;
+                //b.descricao = "Descrição - B" + i;
                 b.setUrlFoto("http://www.sonhos.com.br/wp-content/uploads/2014/09/sonhar-com-boi-149952899.jpg");
                 bovinos.add(b);
 
@@ -73,7 +79,7 @@ public class BovinoService {
                 b.setGenero(true);
                 b.setRaca(raca);   /* "Nelore - B" + i; */
                 b.setPelagem(pelagem);   /* = "Branca - B" + i; */
-                b.desc = "Descrição - B" + i;
+               // b.descricao = "Descrição - B" + i;
                 b.setUrlFoto("https://tiacarmela.files.wordpress.com/2012/06/boi-olho.jpeg");
                 bovinos.add(b);
 

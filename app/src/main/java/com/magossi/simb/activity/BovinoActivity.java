@@ -4,19 +4,15 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.magossi.simb.MainActivity;
 import com.magossi.simb.R;
-import com.magossi.simb.domain.Bovino;
+import com.magossi.simb.domain.bovino.Bovino;
 import com.magossi.simb.fragment.BovinoFragment;
-import com.magossi.simb.fragment.BovinosFragment;
 
 /**
  * Created by RafaelMq on 13/10/2016.

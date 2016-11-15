@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.magossi.simb.R;
-import com.magossi.simb.domain.DiagnosticoGestacao;
+import com.magossi.simb.domain.matriz.DiagnosticoGestacao;
 
 import java.util.List;
 

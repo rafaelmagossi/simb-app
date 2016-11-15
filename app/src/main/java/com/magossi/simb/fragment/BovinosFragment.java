@@ -11,21 +11,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
 
 import com.magossi.simb.R;
 import com.magossi.simb.activity.BovinoActivity;
 import com.magossi.simb.adapter.BovinoAdapter;
-import com.magossi.simb.domain.Bovino;
-import com.magossi.simb.domain.BovinoService;
+import com.magossi.simb.domain.bovino.Bovino;
+import com.magossi.simb.interfaces.BovinoListInterface;
+import com.magossi.simb.task.buscar.TaskBuscaBovinoList;
 
-public class BovinosFragment extends Fragment {
+public class BovinosFragment extends Fragment implements BovinoListInterface {
+
+
     protected RecyclerView recyclerView;
     private List<Bovino> bovinos;
     private LinearLayoutManager mLayoutManager;
     private String tipo;
+    private TaskBuscaBovinoList taskBuscaBovinoList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,25 +52,25 @@ public class BovinosFragment extends Fragment {
                 super.onScrollStateChanged(recyclerView, newState);
             }
 
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                LinearLayoutManager llm = (LinearLayoutManager) recyclerView.getLayoutManager();
-                BovinoAdapter adapter = (BovinoAdapter) recyclerView.getAdapter();
-
-                if (bovinos.size() == llm.findLastCompletelyVisibleItemPosition() + 1) {
-                    //aqui carrega a quantidade
-                    List<Bovino> listAux = BovinoService.getBovinos(getContext(), bovinos.size());
-
-                    for (int i = 0; i < listAux.size(); i++) {
-                        adapter.addListItem(listAux.get(i), bovinos.size());
-
-
-                    }
-
-                }
-            }
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//
+//                LinearLayoutManager llm = (LinearLayoutManager) recyclerView.getLayoutManager();
+//                BovinoAdapter adapter = (BovinoAdapter) recyclerView.getAdapter();
+//
+//                if (bovinos.size() == llm.findLastCompletelyVisibleItemPosition() + 1) {
+//                    //aqui carrega a quantidade
+//                    List<Bovino> listAux = BovinoService.getBovinos(getContext(), bovinos.size());
+//
+//                    for (int i = 0; i < listAux.size(); i++) {
+//                        adapter.addListItem(listAux.get(i), bovinos.size());
+//
+//
+//                    }
+//
+//                }
+//            }
         });
 
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -83,15 +86,24 @@ public class BovinosFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        taskbovinos();
+        //taskbovinos();
+
+        taskBuscaBovinoList = new TaskBuscaBovinoList(this.getContext(), this.getActivity(), this);
+        taskBuscaBovinoList.execute("/bovino", "");
     }
 
-    private void taskbovinos() {
-        // Busca os bovinos
-        this.bovinos = BovinoService.getBovinos(getContext(), 0);
-        // Atualiza a lista
-        recyclerView.setAdapter(new BovinoAdapter(getContext(), bovinos, onClickBovino()));
+    @Override
+    public void depoisBuscaBovinos(List<Bovino> bovinos, String erro) {
+        this.bovinos = bovinos;
+        recyclerView.setAdapter(new BovinoAdapter(getContext(), this.bovinos, onClickBovino()));
     }
+
+//    private void taskbovinos() {
+//        // Busca os bovinos
+//        this.bovinos = BovinoService.getBovinos(getContext(), 0);
+//        // Atualiza a lista
+//        recyclerView.setAdapter(new BovinoAdapter(getContext(), bovinos, onClickBovino()));
+//    }
 
     private BovinoAdapter.BovinoOnClickListener onClickBovino() {
         return new BovinoAdapter.BovinoOnClickListener() {

@@ -2,16 +2,12 @@ package com.magossi.simb.fragment;
 
 
 import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,20 +15,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.github.pinball83.maskededittext.MaskedEditText;
 import com.magossi.simb.R;
 import com.magossi.simb.activity.CadastroActivity;
-import com.magossi.simb.domain.Bovino;
-import com.magossi.simb.domain.Fazenda;
-import com.magossi.simb.domain.Proprietario;
+import com.magossi.simb.domain.bovino.Fazenda;
+import com.magossi.simb.domain.bovino.Proprietario;
 import com.magossi.simb.interfaces.FazendaListInterface;
 import com.magossi.simb.interfaces.ProprietarioListInterface;
-import com.magossi.simb.task.TaskBuscaFazendaList;
-import com.magossi.simb.task.TaskBuscaProprietarioList;
+import com.magossi.simb.task.buscar.TaskBuscaFazendaList;
+import com.magossi.simb.task.buscar.TaskBuscaProprietarioList;
 
 import java.text.DateFormat;
 import java.text.ParseException;

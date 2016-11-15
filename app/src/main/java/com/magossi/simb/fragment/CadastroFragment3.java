@@ -16,10 +16,9 @@ import com.magossi.simb.MainActivity;
 import com.magossi.simb.R;
 import com.magossi.simb.activity.CadastroActivity;
 import com.magossi.simb.interfaces.BovinoObjInterface;
-import com.magossi.simb.task.TaskSalvaBobinoObj;
+import com.magossi.simb.task.salvar.TaskSalvaBobinoObj;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -103,7 +102,7 @@ public class CadastroFragment3 extends Fragment implements BovinoObjInterface {
             public void onClick(View v) {
 
                 taskSalvaBobinoObj.execute(cadastroActivity.getBovino());
-
+     //dsadas
 
             }
         });

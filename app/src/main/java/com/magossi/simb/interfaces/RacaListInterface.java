@@ -1,6 +1,6 @@
 package com.magossi.simb.interfaces;
 
-import com.magossi.simb.domain.Raca;
+import com.magossi.simb.domain.bovino.Raca;
 
 import java.util.List;
 
