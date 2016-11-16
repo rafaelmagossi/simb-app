@@ -2,7 +2,6 @@ package com.magossi.simb.domain.tarefas;
 
 
 import com.magossi.simb.domain.bovino.Bovino;
-import com.magossi.simb.domain.matriz.Inseminacao;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,29 +11,30 @@ import java.util.Date;
  */
 
 
+public class Tarefa implements Serializable {
 
-public class TarefaInseminacao implements Serializable {
 
-
-    private Long idTarefaInseminacao;
+    private Long idTarefa;
     private Bovino bovinoMatriz;
-    private Inseminacao inseminacao;
-    private boolean statusDaTarefa;
+    private TipoTarefaEnum tipoTarefa;
+    private String identificacaoSmartfone;
     private Date daraInclusao = new Date();
+    private boolean statusDaTarefa;
     private Date dataConclusao;
     private boolean status;
 
 
-    public TarefaInseminacao(){
+    public Tarefa(){
         status = true;
+        statusDaTarefa = false;
     }
 
-    public Long getIdTarefaInseminacao() {
-        return idTarefaInseminacao;
+    public Long getIdTarefa() {
+        return idTarefa;
     }
 
-    public void setIdTarefaInseminacao(Long idTarefaInseminacao) {
-        this.idTarefaInseminacao = idTarefaInseminacao;
+    public void setIdTarefa(Long idTarefa) {
+        this.idTarefa = idTarefa;
     }
 
     public Bovino getBovinoMatriz() {
@@ -43,14 +43,6 @@ public class TarefaInseminacao implements Serializable {
 
     public void setBovinoMatriz(Bovino bovinoMatriz) {
         this.bovinoMatriz = bovinoMatriz;
-    }
-
-    public Inseminacao getInseminacao() {
-        return inseminacao;
-    }
-
-    public void setInseminacao(Inseminacao inseminacao) {
-        this.inseminacao = inseminacao;
     }
 
     public Date getDaraInclusao() {
@@ -83,5 +75,21 @@ public class TarefaInseminacao implements Serializable {
 
     public void setStatusDaTarefa(boolean statusDaTarefa) {
         this.statusDaTarefa = statusDaTarefa;
+    }
+
+    public TipoTarefaEnum getTipoTarefa() {
+        return tipoTarefa;
+    }
+
+    public void setTipoTarefa(TipoTarefaEnum tipoTarefa) {
+        this.tipoTarefa = tipoTarefa;
+    }
+
+    public String getIdentificacaoSmartfone() {
+        return identificacaoSmartfone;
+    }
+
+    public void setIdentificacaoSmartfone(String identificacaoSmartfone) {
+        this.identificacaoSmartfone = identificacaoSmartfone;
     }
 }

@@ -7,10 +7,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.magossi.simb.domain.bovino.Bovino;
-import com.magossi.simb.domain.matriz.FichaMatriz;
+import com.magossi.simb.domain.tarefas.Tarefa;
 import com.magossi.simb.extra.MainConfig;
-import com.magossi.simb.interfaces.salvar.FichaMatrizBovinoObjInterface;
-import com.magossi.simb.interfaces.salvar.PesoBovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.BovinoSalvarInterface;
+import com.magossi.simb.interfaces.salvar.TarefaSalvarInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
@@ -19,20 +19,20 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by RafaelMq on 11/11/2016.
  */
-public class TaskSalvaFichaMatrizBovinoObj extends AsyncTask<Bovino, String, String> {
+public class TaskSalvaTarefaObj extends AsyncTask<Tarefa, String, String> {
 
     private HttpClientErrorException erroHttp;
     private Exception erro;
     private String urlBovino;
 
     private Context context;
-    private FichaMatrizBovinoObjInterface fichaMatrizBovinoObjInterface;
+    private TarefaSalvarInterface tarefaSalvarInterface;
     private ProgressDialog progress;
 
 
-    public TaskSalvaFichaMatrizBovinoObj(Context context, FichaMatrizBovinoObjInterface fichaMatrizBovinoObjInterface){
+    public TaskSalvaTarefaObj(Context context, TarefaSalvarInterface tarefaSalvarInterface){
         this.context = context;
-        this.fichaMatrizBovinoObjInterface = fichaMatrizBovinoObjInterface;
+        this.tarefaSalvarInterface = tarefaSalvarInterface;
     }
 
 
@@ -45,22 +45,19 @@ public class TaskSalvaFichaMatrizBovinoObj extends AsyncTask<Bovino, String, Str
     }
 
     @Override
-    protected String doInBackground(Bovino... params) {
+    protected String doInBackground(Tarefa... params) {
         String urlBovino = null;
         //String URL = "http://192.168.0.100:8080/bovino";
-        String URL = MainConfig.getUrl()+ "bovino/"
-                + "{id}"
-                +"/fichamatriz";
+        String URL = MainConfig.getUrl()+"tarefa";
 
         try{
             erro = null;
             urlBovino = null;
             publishProgress("Aguarde");
-            String url = URL.replace("{id}", params[0].getIdBovino().toString());
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             //urlBovino = restTemplate.postForObject(URL,params[0],String.class);
-            urlBovino = restTemplate.postForLocation(url,params[0].getFichaMatriz(),String.class).toString();
+            urlBovino = restTemplate.postForLocation(URL,params[0],String.class).toString();
             publishProgress("Salvo");
 
         }catch (HttpClientErrorException e) {
@@ -84,17 +81,17 @@ public class TaskSalvaFichaMatrizBovinoObj extends AsyncTask<Bovino, String, Str
         progress.setMessage("Salvo");
 
         if(params != null ){
-            fichaMatrizBovinoObjInterface.depoisSalvaFichaBovino(params, null);
+            tarefaSalvarInterface.depoisSalvarTarefa(params, null);
             progress.dismiss();
             Toast.makeText(this.context, "Salvo", Toast.LENGTH_SHORT).show();
 
         }else if(erro != null){
             progress.dismiss();
-            Toast.makeText(this.context, "Erro ao Salvar 1", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.context, "Erro ao Salvar", Toast.LENGTH_SHORT).show();
         }else if(erroHttp != null){
-            fichaMatrizBovinoObjInterface.depoisSalvaFichaBovino(null, erroHttp.getStatusCode().toString());
+            tarefaSalvarInterface.depoisSalvarTarefa(null, erroHttp.getStatusCode().toString());
             progress.dismiss();
-            Toast.makeText(this.context, "Erro ao Salvar 2", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.context, "Erro ao Salvar", Toast.LENGTH_SHORT).show();
         }
     }
 }

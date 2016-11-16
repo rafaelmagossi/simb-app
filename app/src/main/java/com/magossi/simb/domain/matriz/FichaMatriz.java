@@ -15,6 +15,7 @@ import java.util.List;
 public class FichaMatriz implements Serializable {
 
 
+
     private Long idFichaMatriz;
     private List<Inseminacao> inseminacao;
     private List<DiagnosticoGestacao> diagnosticoGestacao;
@@ -63,6 +64,10 @@ public class FichaMatriz implements Serializable {
         return dataInclusao;
     }
 
+    public void setDataInclusao(Date dataInclusao) {
+        this.dataInclusao = dataInclusao;
+    }
+
     public Boolean getStatus() {
         return status;
     }
@@ -71,3 +76,5 @@ public class FichaMatriz implements Serializable {
         this.status = status;
     }
 }
+
+

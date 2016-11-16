@@ -29,11 +29,16 @@ import com.magossi.simb.adapter.PesoAdapter;
 import com.magossi.simb.domain.bovino.Ecc;
 import com.magossi.simb.domain.bovino.Peso;
 import com.magossi.simb.domain.matriz.FichaMatriz;
-import com.magossi.simb.domain.tarefas.TarefaInseminacao;
+import com.magossi.simb.domain.tarefas.Tarefa;
+import com.magossi.simb.domain.tarefas.TipoTarefaEnum;
 import com.magossi.simb.interfaces.salvar.EccBovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.FichaMatrizBovinoObjInterface;
 import com.magossi.simb.interfaces.salvar.PesoBovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.TarefaSalvarInterface;
 import com.magossi.simb.task.salvar.TaskSalvaEccBovinoObj;
+import com.magossi.simb.task.salvar.TaskSalvaFichaMatrizBovinoObj;
 import com.magossi.simb.task.salvar.TaskSalvaPesoBovinoObj;
+import com.magossi.simb.task.salvar.TaskSalvaTarefaObj;
 import com.squareup.picasso.Picasso;
 
 import com.magossi.simb.R;
@@ -49,10 +54,12 @@ import java.util.Date;
 import java.util.List;
 
 
-public class BovinoFragment extends Fragment implements EccBovinoObjInterface, PesoBovinoObjInterface{
+public class BovinoFragment extends Fragment implements EccBovinoObjInterface, PesoBovinoObjInterface, FichaMatrizBovinoObjInterface, TarefaSalvarInterface{
 
     private TaskSalvaEccBovinoObj taskSalvaEccBovinoObj;
     private TaskSalvaPesoBovinoObj taskSalvaPesoBovinoObj;
+    private TaskSalvaFichaMatrizBovinoObj taskSalvaFichaMatrizBovinoObj;
+    private TaskSalvaTarefaObj taskSalvaTarefaObj;
 
     private Bovino bovino;
     private TextView textview_nome;
@@ -94,6 +101,8 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
 
         taskSalvaEccBovinoObj = new TaskSalvaEccBovinoObj(this.getContext(),this);
         taskSalvaPesoBovinoObj = new TaskSalvaPesoBovinoObj(this.getContext(),this);
+        taskSalvaFichaMatrizBovinoObj = new TaskSalvaFichaMatrizBovinoObj(this.getContext(),this);
+        taskSalvaTarefaObj = new TaskSalvaTarefaObj(this.getContext(),this);
 
 
         textview_nome = (TextView) view.findViewById(R.id.textview_busca_nome_bovino);
@@ -443,20 +452,6 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
 
     }
 
-    @Override
-    public void depoisAlteraPesoBovino(String url, String erro) {
-
-        textView_ultimoPeso.setText(bovino.getPeso().get(bovino.getPeso().size()-1).getPeso()+" Kilos");
-
-    }
-
-    @Override
-    public void depoisAlteraEccBovino(String url, String erro) {
-
-        textView_ultimoEcc.setText(bovino.getEcc().get(bovino.getEcc().size()-1).getEscore()+"");
-
-    }
-
     public void dialogFichaMatriz(Context context){
         dialog = new AlertDialog.Builder(context);
 //        dialogView = getActivity().getLayoutInflater().inflate( R.layout.fragment_layout_incluirpeso, null );
@@ -470,15 +465,17 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
                 try {
 
 
-//                        FichaMatriz fichaMatriz = new FichaMatriz();
-//
-//                        TarefaInseminacao tarefaInseminacao = new TarefaInseminacao();
-//                        tarefaInseminacao.setBovinoMatriz(bovino);
-//
-//                        bovino.setFichaMatriz(fichaMatriz);
-//
-//                        //chamada WebService
-//                        taskSalvaPesoBovinoObj.execute(bovino);
+                        FichaMatriz fichaMatriz = new FichaMatriz();
+
+
+
+
+                        bovino.setFichaMatriz(fichaMatriz);
+
+                        //chamada WebService
+                        taskSalvaFichaMatrizBovinoObj.execute(bovino);
+
+
 
 
                 } catch (Exception ex) {
@@ -499,6 +496,39 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
 
         AlertDialog alertDialog = dialog.create();
         dialog.show();
+    }
+
+    @Override
+    public void depoisAlteraPesoBovino(String url, String erro) {
+
+        textView_ultimoPeso.setText(bovino.getPeso().get(bovino.getPeso().size()-1).getPeso()+" Kilos");
+
+    }
+
+    @Override
+    public void depoisAlteraEccBovino(String url, String erro) {
+
+        textView_ultimoEcc.setText(bovino.getEcc().get(bovino.getEcc().size()-1).getEscore()+"");
+
+    }
+
+    @Override
+    public void depoisSalvaFichaBovino(String url, String erro) {
+
+
+        if (url != null && erro == null ){
+            Tarefa tarefa = new Tarefa();
+            tarefa.setBovinoMatriz(bovino);
+            tarefa.setTipoTarefa(TipoTarefaEnum.Inseminação);
+
+            taskSalvaTarefaObj.execute(tarefa);
+
+        }
+    }
+
+    @Override
+    public void depoisSalvarTarefa(String url, String erro) {
+
     }
 
     public static String formataDateToString(Date data) throws Exception {

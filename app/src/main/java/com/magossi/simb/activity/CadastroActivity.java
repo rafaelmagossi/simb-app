@@ -64,8 +64,13 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         Bundle args = getIntent().getExtras();
-        tagNFC = args.getString("tagNFC");
-        bovino.setTag(tagNFC);
+
+        try {
+            tagNFC = args.getString("tagNFC");
+            bovino.setTag(tagNFC);
+        }catch (Exception e){
+            e.getMessage();
+        }
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT);
 
