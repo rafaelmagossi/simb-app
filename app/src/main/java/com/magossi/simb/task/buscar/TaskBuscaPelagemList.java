@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.magossi.simb.domain.bovino.Pelagem;
 import com.magossi.simb.extra.MainConfig;
-import com.magossi.simb.interfaces.PelagemListInterface;
+import com.magossi.simb.interfaces.buscar.PelagemListInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;

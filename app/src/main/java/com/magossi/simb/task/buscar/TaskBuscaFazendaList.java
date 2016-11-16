@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.magossi.simb.domain.bovino.Fazenda;
 import com.magossi.simb.extra.MainConfig;
-import com.magossi.simb.interfaces.FazendaListInterface;
+import com.magossi.simb.interfaces.buscar.FazendaListInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;

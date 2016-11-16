@@ -18,6 +18,7 @@ public class Inseminacao implements Serializable {
 
 
 
+
     public Inseminacao(String id, String dataInseminacao, String previsaoParto, String parto) {
 
         this.id = id;

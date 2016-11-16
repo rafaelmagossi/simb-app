@@ -3,6 +3,7 @@ package com.magossi.simb.domain.bovino;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.magossi.simb.domain.matriz.FichaMatriz;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -30,6 +31,7 @@ public class Bovino implements Serializable{
     private Proprietario proprietario;
     private List<Ecc> ecc;
     private List<Peso> peso;
+    private FichaMatriz fichaMatriz;
     private Boolean status;
     private Date dataInclusao;
     private String urlFoto;
@@ -150,6 +152,14 @@ public class Bovino implements Serializable{
 
     public void setPeso(List<Peso> peso) {
         this.peso = peso;
+    }
+
+    public FichaMatriz getFichaMatriz() {
+        return fichaMatriz;
+    }
+
+    public void setFichaMatriz(FichaMatriz fichaMatriz) {
+        this.fichaMatriz = fichaMatriz;
     }
 
     public Boolean getStatus() {

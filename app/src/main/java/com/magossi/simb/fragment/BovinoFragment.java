@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +28,10 @@ import com.magossi.simb.adapter.EccAdapter;
 import com.magossi.simb.adapter.PesoAdapter;
 import com.magossi.simb.domain.bovino.Ecc;
 import com.magossi.simb.domain.bovino.Peso;
-import com.magossi.simb.interfaces.EccBovinoListInterface;
-import com.magossi.simb.interfaces.EccBovinoObjInterface;
-import com.magossi.simb.interfaces.PesoBovinoObjInterface;
-import com.magossi.simb.task.buscar.TaskBuscaEccBovinoList;
+import com.magossi.simb.domain.matriz.FichaMatriz;
+import com.magossi.simb.domain.tarefas.TarefaInseminacao;
+import com.magossi.simb.interfaces.salvar.EccBovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.PesoBovinoObjInterface;
 import com.magossi.simb.task.salvar.TaskSalvaEccBovinoObj;
 import com.magossi.simb.task.salvar.TaskSalvaPesoBovinoObj;
 import com.squareup.picasso.Picasso;
@@ -184,9 +183,22 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(getContext(), MatrizActivity.class);
-                    intent.putExtra("bovino", bovino);
-                    startActivity(intent);
+                    if(bovino.getFichaMatriz() != null){
+
+                        Intent intent = new Intent(getContext(), MatrizActivity.class);
+                        intent.putExtra("FichaMatriz", bovino.getFichaMatriz());
+                        startActivity(intent);
+
+                    }else{
+
+                        dialogFichaMatriz(getContext());
+
+
+                    }
+
+//                    Intent intent = new Intent(getContext(), MatrizActivity.class);
+//                    intent.putExtra("bovino", bovino);
+//                    startActivity(intent);
 
 
 
@@ -443,6 +455,50 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
 
         textView_ultimoEcc.setText(bovino.getEcc().get(bovino.getEcc().size()-1).getEscore()+"");
 
+    }
+
+    public void dialogFichaMatriz(Context context){
+        dialog = new AlertDialog.Builder(context);
+//        dialogView = getActivity().getLayoutInflater().inflate( R.layout.fragment_layout_incluirpeso, null );
+//
+//        dialog.setView(dialogView);
+        dialog.setMessage("Criar nova Matriz?");
+        dialog.setPositiveButton(" Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                try {
+
+
+//                        FichaMatriz fichaMatriz = new FichaMatriz();
+//
+//                        TarefaInseminacao tarefaInseminacao = new TarefaInseminacao();
+//                        tarefaInseminacao.setBovinoMatriz(bovino);
+//
+//                        bovino.setFichaMatriz(fichaMatriz);
+//
+//                        //chamada WebService
+//                        taskSalvaPesoBovinoObj.execute(bovino);
+
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    Toast.makeText(getContext(), "Erro ao Salvar Ficha Matriz", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
+        dialog.setNegativeButton("Não     ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = dialog.create();
+        dialog.show();
     }
 
     public static String formataDateToString(Date data) throws Exception {

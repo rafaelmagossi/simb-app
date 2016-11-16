@@ -9,8 +9,8 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <!--<uses-feature android:name="android.hardware.nfc" android:required="true"/>-->
-    <!--<uses-permission android:name="android.permission.NFC" />-->
+    <uses-feature android:name="android.hardware.nfc" android:required="true"/>
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
         android:allowBackup="true"
@@ -22,20 +22,18 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <!--<action android:name="android.nfc.action.TAG_DISCOVERED"/>-->
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.CadastroActivity"
+        <activity android:name=".activity.CadastroActivity"
             android:parentActivityName=".MainActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
-        <activity
-            android:name=".activity.ScannerActivity"
-            android:parentActivityName=".MainActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+        <activity android:name=".activity.ScannerActivity" android:parentActivityName=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.BuscarActivity"
@@ -50,7 +48,7 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".activity.BovinoActivity">
+            android:name=".activity.BovinoActivity" android:parentActivityName=".MainActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.BuscarActivity"/>
         </activity>

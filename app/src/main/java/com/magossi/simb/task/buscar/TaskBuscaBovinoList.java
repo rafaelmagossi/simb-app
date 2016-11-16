@@ -5,22 +5,17 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationConfig;
 import com.magossi.simb.domain.bovino.Bovino;
-import com.magossi.simb.domain.bovino.Ecc;
 import com.magossi.simb.extra.MainConfig;
-import com.magossi.simb.interfaces.BovinoListInterface;
+import com.magossi.simb.interfaces.buscar.BovinoListInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 

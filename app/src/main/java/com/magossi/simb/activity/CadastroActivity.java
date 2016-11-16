@@ -33,6 +33,7 @@ public class CadastroActivity extends AppCompatActivity {
     private CadastroFragment3 cadastroFragment3;
 
     private Bovino bovino = new Bovino();
+    private String tagNFC;
 
     public CadastroActivity(){
         cadastroFragment1 = new CadastroFragment1();
@@ -61,6 +62,10 @@ public class CadastroActivity extends AppCompatActivity {
         Log.i("fragment", "Activity -  onCreate()" );
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+        Bundle args = getIntent().getExtras();
+        tagNFC = args.getString("tagNFC");
+        bovino.setTag(tagNFC);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT);
 

@@ -1,4 +1,4 @@
-package com.magossi.simb.interfaces;
+package com.magossi.simb.interfaces.buscar;
 
 import com.magossi.simb.domain.bovino.Fazenda;
 
