@@ -5,6 +5,7 @@ package com.magossi.simb.adapter;
  */
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -65,19 +66,27 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.TarefaView
         Tarefa t = tarefas.get(position);
         holder.textview_nomeBovino.setText(t.getBovinoMatriz().getNomeBovino());
         holder.textview_nomeTarefa.setText(t.getTipoTarefa().toString());
-        holder.progress.setVisibility(View.VISIBLE);
+        if(!t.getStatusDaTarefa()) {
+            holder.textView_statusTarefa.setText("A Fazer");
+            holder.textView_statusTarefa.setTextColor(Color.RED);
+        }else{
+            holder.textView_statusTarefa.setText("Concluida");
+            holder.textView_statusTarefa.setTextColor(Color.GREEN);
+        }
 
-        Picasso.with(context).load(t.getBovinoMatriz().getUrlFoto()).fit().into(holder.img_tarefa, new Callback() {
-            @Override
-            public void onSuccess() {
-                holder.progress.setVisibility(View.GONE);
-            }
+        //holder.progress.setVisibility(View.VISIBLE);
 
-            @Override
-            public void onError() {
-                holder.progress.setVisibility(View.GONE);
-            }
-        });
+//        Picasso.with(context).load(t.getBovinoMatriz().getUrlFoto()).fit().into(holder.img_tarefa, new Callback() {
+//            @Override
+//            public void onSuccess() {
+//                holder.progress.setVisibility(View.GONE);
+//            }
+//
+//            @Override
+//            public void onError() {
+//                holder.progress.setVisibility(View.GONE);
+//            }
+//        });
 
         // Click
         if (tarefaOnClickListener != null) {
@@ -109,6 +118,7 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.TarefaView
     public static class TarefaViewHolder extends RecyclerView.ViewHolder {
         public TextView textview_nomeBovino;
         public TextView textview_nomeTarefa;
+        public TextView textView_statusTarefa;
         public ImageView img_tarefa;
         public ProgressBar progress;
 
@@ -116,10 +126,11 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.TarefaView
             super(view);
             // Cria as views para salvar no ViewHolder
 
-            img_tarefa = (ImageView) view.findViewById(R.id.img_tarefa);
-            progress = (ProgressBar) view.findViewById(R.id.progressImg);
+//            img_tarefa = (ImageView) view.findViewById(R.id.img_tarefa);
+//            progress = (ProgressBar) view.findViewById(R.id.progressImg);
             textview_nomeBovino = (TextView) view.findViewById(R.id.textview_item_tarefa_nomeBovino);
             textview_nomeTarefa = (TextView) view.findViewById(R.id.textview_item_tarefa_nomeTarefa);
+            textView_statusTarefa = (TextView) view.findViewById(R.id.textview_item_tarefa_status);
         }
     }
 }

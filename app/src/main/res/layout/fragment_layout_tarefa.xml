@@ -77,97 +77,11 @@
                         android:layout_alignTop="@+id/textview_tarefa_nome" />
 
                     <TextView
-                        android:id="@+id/textview_tarefa_pai"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/textview_tarefa_nome"
-                        android:layout_marginTop="10dp"
-                        android:text="Pai: "
-                        android:textAllCaps="true"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/textview_tarefa_pai_bovino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:layout_toRightOf="@+id/textview_tarefa_pai"
-                        android:layout_alignLeft="@+id/textview_tarefa_nome_bovino"
-                        android:layout_alignTop="@+id/textview_tarefa_pai"/>
-
-                    <TextView
-                        android:id="@+id/textview_tarefa_mae"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/textview_tarefa_pai_bovino"
-                        android:layout_marginTop="10dp"
-                        android:text="Mae: "
-                        android:textAllCaps="true"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/textview_tarefa_mae_bovino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:layout_toRightOf="@+id/textview_tarefa_mae"
-                        android:layout_alignTop="@+id/textview_tarefa_mae"
-                        android:layout_alignLeft="@+id/textview_tarefa_nome_bovino"/>
-
-                    <TextView
-                        android:id="@+id/textview_tarefa_datanasc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/textview_tarefa_mae_bovino"
-                        android:layout_marginTop="10dp"
-                        android:text="Data Nascimeto:  "
-                        android:textAllCaps="true"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/textview_tarefa_datanasc_bovino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:layout_toRightOf="@+id/textview_tarefa_datanasc"
-                        android:layout_alignBottom="@+id/textview_tarefa_datanasc" />
-
-                    <TextView
-                        android:id="@+id/textview_tarefa_proprietario"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/textview_tarefa_datanasc"
-                        android:layout_marginTop="10dp"
-                        android:text="Proprietário:  "
-                        android:textAllCaps="true"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/textview_tarefa_proprietario_bovino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:layout_toRightOf="@+id/textview_tarefa_proprietario"
-                        android:layout_alignBottom="@+id/textview_tarefa_proprietario" />
-
-                    <TextView
                         android:id="@+id/textview_tarefa_fazenda"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/textview_tarefa_proprietario"
+                        android:layout_below="@+id/textview_tarefa_nome"
                         android:layout_marginTop="10dp"
                         android:text="Fazenda:  "
                         android:textAllCaps="true"
@@ -184,32 +98,11 @@
                         android:layout_alignBottom="@+id/textview_tarefa_fazenda" />
 
                     <TextView
-                        android:id="@+id/textview_tarefa_genero"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/textview_tarefa_fazenda"
-                        android:layout_marginTop="10dp"
-                        android:text="Gênero:  "
-                        android:textAllCaps="true"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/textview_tarefa_genero_bovino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:layout_toRightOf="@+id/textview_tarefa_genero"
-                        android:layout_alignBottom="@+id/textview_tarefa_genero" />
-
-                    <TextView
                         android:id="@+id/textview_tarefa_raca"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/textview_tarefa_genero"
+                        android:layout_below="@+id/textview_tarefa_fazenda"
                         android:layout_marginTop="10dp"
                         android:text="Raça:  "
                         android:textAllCaps="true"
@@ -255,132 +148,124 @@
                         android:layout_below="@+id/textview_tarefa_pelagem"
                         android:background="@color/colorPrimary" />
 
-                    <TextView
-                        android:id="@+id/textview_tarefa_peso"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/textview_tarefa_pelagem"
-                        android:layout_marginTop="30dp"
-                        android:text="ultima pesagem:  "
-                        android:textAllCaps="true"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/textview_tarefa_peso"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentLeft="true"-->
+                        <!--android:layout_below="@+id/textview_tarefa_pelagem"-->
+                        <!--android:layout_marginTop="30dp"-->
+                        <!--android:text="ultima pesagem:  "-->
+                        <!--android:textAllCaps="true"-->
+                        <!--android:textColor="@color/colorPrimaryDark"-->
+                        <!--android:textSize="16dp" />-->
 
-                    <TextView
-                        android:id="@+id/textview_tarefa_peso_bovino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:layout_toRightOf="@+id/textview_tarefa_peso"
-                        android:layout_alignBottom="@+id/textview_tarefa_peso" />
 
                     <Button
                         android:id="@+id/button_tarefa_peso_ver"
-                        android:layout_width="90dp"
+                        android:layout_width="120dp"
                         android:layout_height="40dp"
-                        android:layout_below="@+id/textview_tarefa_peso_bovino"
+                        android:layout_below="@+id/textview_tarefa_pelagem"
                         android:layout_alignParentLeft="true"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="30dp"
                         android:layout_marginBottom="20dp"
                         android:background="@color/colorPrimary"
-                        android:text="Ver Todas"
+                        android:text="Dados Animal"
                         android:textColor="@android:color/white" />
 
                     <Button
                         android:id="@+id/button_tarefa_peso_incluir"
-                        android:layout_width="90dp"
+                        android:layout_width="120dp"
                         android:layout_height="40dp"
                         android:layout_toRightOf="@+id/button_tarefa_peso_ver"
                         android:layout_alignBottom="@+id/button_tarefa_peso_ver"
                         android:layout_marginLeft="10dp"
                         android:background="@color/colorPrimary"
-                        android:text="Incluir"
+                        android:text="Executar Tarefa"
                         android:textColor="@android:color/white" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginBottom="6dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_below="@+id/button_tarefa_peso_ver"
-                        android:background="@color/colorPrimary" />
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="2dp"-->
+                        <!--android:layout_marginBottom="6dp"-->
+                        <!--android:layout_marginTop="8dp"-->
+                        <!--android:layout_below="@+id/button_tarefa_peso_ver"-->
+                        <!--android:background="@color/colorPrimary" />-->
 
 
-                    <TextView
-                        android:id="@+id/textview_tarefa_ecc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_below="@+id/button_tarefa_peso_ver"
-                        android:layout_marginTop="30dp"
-                        android:text="ultimo ECC:  "
-                        android:textAllCaps="true"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="16dp" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/textview_tarefa_ecc"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentLeft="true"-->
+                        <!--android:layout_below="@+id/button_tarefa_peso_ver"-->
+                        <!--android:layout_marginTop="30dp"-->
+                        <!--android:text="ultimo ECC:  "-->
+                        <!--android:textAllCaps="true"-->
+                        <!--android:textColor="@color/colorPrimaryDark"-->
+                        <!--android:textSize="16dp" />-->
 
-                    <TextView
-                        android:id="@+id/textview_tarefa_ecc_bovino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="6"
-                        android:textColor="@color/black"
-                        android:textSize="16dp"
-                        android:layout_toRightOf="@+id/textview_tarefa_ecc"
-                        android:layout_alignBottom="@+id/textview_tarefa_ecc" />
+                    <!--<TextView-->
+                        <!--android:id="@+id/textview_tarefa_ecc_bovino"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="6"-->
+                        <!--android:textColor="@color/black"-->
+                        <!--android:textSize="16dp"-->
+                        <!--android:layout_toRightOf="@+id/textview_tarefa_ecc"-->
+                        <!--android:layout_alignBottom="@+id/textview_tarefa_ecc" />-->
 
-                    <Button
-                        android:id="@+id/button_tarefa_ecc_ver"
-                        android:layout_width="90dp"
-                        android:layout_height="40dp"
-                        android:layout_below="@+id/textview_tarefa_ecc"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="20dp"
-                        android:background="@color/colorPrimary"
-                        android:text="Ver Todos"
-                        android:textColor="@android:color/white" />
+                    <!--<Button-->
+                        <!--android:id="@+id/button_tarefa_ecc_ver"-->
+                        <!--android:layout_width="90dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:layout_below="@+id/textview_tarefa_ecc"-->
+                        <!--android:layout_alignParentLeft="true"-->
+                        <!--android:layout_marginTop="10dp"-->
+                        <!--android:layout_marginBottom="20dp"-->
+                        <!--android:background="@color/colorPrimary"-->
+                        <!--android:text="Ver Todos"-->
+                        <!--android:textColor="@android:color/white" />-->
 
-                    <Button
-                        android:id="@+id/button_tarefa_ecc_incluir"
-                        android:layout_width="90dp"
-                        android:layout_height="40dp"
-                        android:layout_toRightOf="@+id/button_tarefa_ecc_ver"
-                        android:layout_alignBottom="@+id/button_tarefa_ecc_ver"
-                        android:layout_marginLeft="10dp"
-                        android:background="@color/colorPrimary"
-                        android:text="Incluir"
-                        android:textColor="@android:color/white" />
+                    <!--<Button-->
+                        <!--android:id="@+id/button_tarefa_ecc_incluir"-->
+                        <!--android:layout_width="90dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:layout_toRightOf="@+id/button_tarefa_ecc_ver"-->
+                        <!--android:layout_alignBottom="@+id/button_tarefa_ecc_ver"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:background="@color/colorPrimary"-->
+                        <!--android:text="Incluir"-->
+                        <!--android:textColor="@android:color/white" />-->
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginBottom="6dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_below="@+id/button_tarefa_ecc_ver"
-                        android:background="@color/colorPrimary" />
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="2dp"-->
+                        <!--android:layout_marginBottom="6dp"-->
+                        <!--android:layout_marginTop="8dp"-->
+                        <!--android:layout_below="@+id/button_tarefa_ecc_ver"-->
+                        <!--android:background="@color/colorPrimary" />-->
 
-                    <Button
-                        android:id="@+id/button_tarefa_fichamatriz"
-                        android:layout_width="190dp"
-                        android:layout_height="40dp"
-                        android:layout_below="@+id/button_tarefa_ecc_ver"
-                        android:layout_alignLeft="@+id/button_tarefa_ecc_ver"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginBottom="30dp"
-                        android:background="@color/colorPrimary"
-                        android:text="Ficha Matriz"
-                        android:textColor="@android:color/white" />
+                    <!--<Button-->
+                        <!--android:id="@+id/button_tarefa_fichamatriz"-->
+                        <!--android:layout_width="190dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:layout_below="@+id/button_tarefa_ecc_ver"-->
+                        <!--android:layout_alignLeft="@+id/button_tarefa_ecc_ver"-->
+                        <!--android:layout_marginTop="30dp"-->
+                        <!--android:layout_marginBottom="30dp"-->
+                        <!--android:background="@color/colorPrimary"-->
+                        <!--android:text="Ficha Matriz"-->
+                        <!--android:textColor="@android:color/white" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/textview_desc"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:text="descricao"-->
-                    <!--android:textColor="@color/colorPrimary"-->
-                    <!--android:layout_margin="8dp"/>-->
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/textview_desc"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="descricao"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textColor="@color/colorPrimary"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_margin="8dp"/>&ndash;&gt;-->
 
 
 
