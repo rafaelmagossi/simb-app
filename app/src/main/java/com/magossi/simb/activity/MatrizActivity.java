@@ -75,16 +75,16 @@ public class MatrizActivity extends AppCompatActivity  {
 
         // ListView Inseminação
         listView = (ListView) findViewById(R.id.listview_inseminacao);
-        List<Inseminacao> inseminacaos = Inseminacao.getInseminacoes();
-        listView.setAdapter(new InseminacaoAdapter(this, inseminacaos));
-        listView.setFocusable(false);
-        listView.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "Inseminacao: "+position , Toast.LENGTH_SHORT).show();
-                Log.i("TESTE", "entrou");
-            }
-        });
+//        List<Inseminacao> inseminacaos = Inseminacao.getInseminacoes();
+//        listView.setAdapter(new InseminacaoAdapter(this, inseminacaos));
+//        listView.setFocusable(false);
+//        listView.setOnItemClickListener(new OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(getApplicationContext(), "Inseminacao: "+position , Toast.LENGTH_SHORT).show();
+//                Log.i("TESTE", "entrou");
+//            }
+//        });
 
 
         // ListView Diagnostico

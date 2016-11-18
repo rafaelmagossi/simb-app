@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.magossi.simb.R;
 import com.magossi.simb.activity.BovinoActivity;
+import com.magossi.simb.activity.TarefaActivity;
 import com.magossi.simb.adapter.TarefaAdapter;
 import com.magossi.simb.domain.tarefas.Tarefa;
 import com.magossi.simb.interfaces.buscar.TarefaListInterface;
@@ -30,6 +32,8 @@ public class TarefasFragment extends Fragment implements TarefaListInterface {
     private String tipo;
     private TaskBuscaTarefaList taskBuscaTarefaList;
 
+    private TelephonyManager telephonyManager;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,7 @@ public class TarefasFragment extends Fragment implements TarefaListInterface {
         View view = inflater.inflate(R.layout.fragment_layout_tarefas, container, false);
         Log.i("LOG", "onCreateView");
 
+        telephonyManager = (TelephonyManager) getActivity().getSystemService(getContext().TELEPHONY_SERVICE);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView_tarefas);
         recyclerView.setHasFixedSize(true);
@@ -70,15 +75,19 @@ public class TarefasFragment extends Fragment implements TarefaListInterface {
 
 
         taskBuscaTarefaList = new TaskBuscaTarefaList(this.getContext(), this);
-        taskBuscaTarefaList.execute("/tarefa", "");
+        taskBuscaTarefaList.execute("/tarefa/imei/", telephonyManager.getDeviceId());
     }
 
 
     @Override
     public void depoisBuscaTarefas(List<Tarefa> tarefas, String erro) {
 
-        this.tarefas = tarefas;
-        recyclerView.setAdapter(new TarefaAdapter(getContext(), this.tarefas, onClickTarefa()));
+        if(tarefas != null) {
+            this.tarefas = tarefas;
+            recyclerView.setAdapter(new TarefaAdapter(getContext(), this.tarefas, onClickTarefa()));
+        }else if("404".equals(erro)){
+
+        }
 
     }
 
@@ -89,7 +98,7 @@ public class TarefasFragment extends Fragment implements TarefaListInterface {
                 Tarefa t = tarefas.get(idx);
                 //Toast.makeText(getContext(), "Bovino: " + b.getNomeBovino(), Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getContext(), BovinoActivity.class);
+                Intent intent = new Intent(getContext(), TarefaActivity.class);
                 intent.putExtra("tarefa", t);
                 startActivity(intent);
             }

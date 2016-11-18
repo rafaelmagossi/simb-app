@@ -162,7 +162,7 @@
 
 
                     <Button
-                        android:id="@+id/button_tarefa_peso_ver"
+                        android:id="@+id/button_tarefa_bovino_ver"
                         android:layout_width="120dp"
                         android:layout_height="40dp"
                         android:layout_below="@+id/textview_tarefa_pelagem"
@@ -174,11 +174,11 @@
                         android:textColor="@android:color/white" />
 
                     <Button
-                        android:id="@+id/button_tarefa_peso_incluir"
+                        android:id="@+id/button_tarefa_executar"
                         android:layout_width="120dp"
                         android:layout_height="40dp"
-                        android:layout_toRightOf="@+id/button_tarefa_peso_ver"
-                        android:layout_alignBottom="@+id/button_tarefa_peso_ver"
+                        android:layout_toRightOf="@+id/button_tarefa_bovino_ver"
+                        android:layout_alignBottom="@+id/button_tarefa_bovino_ver"
                         android:layout_marginLeft="10dp"
                         android:background="@color/colorPrimary"
                         android:text="Executar Tarefa"

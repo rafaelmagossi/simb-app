@@ -27,7 +27,7 @@ public class TarefasActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT);
 
-        toolbarPadrao = (Toolbar)findViewById(R.id.toolbar_tarefa);
+        toolbarPadrao = (Toolbar)findViewById(R.id.toolbar_tarefas);
         toolbarPadrao.setLogo(R.drawable.ic_toolbar_cadastro);
         toolbarPadrao.setTitle(" Tarefas");
         setSupportActionBar(toolbarPadrao);

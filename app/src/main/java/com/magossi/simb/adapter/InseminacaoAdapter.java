@@ -53,12 +53,12 @@ public class InseminacaoAdapter extends BaseAdapter {
 
 
         // Atualiza os valores das views
-        Inseminacao inseminacao = inseminacaos.get(position);
-
-        textView_id.setText(inseminacao.id);
-        textView_datainseminacao.setText(inseminacao.dataInseminacao);
-        textView_previsaoparto.setText(inseminacao.previsaoParto);
-        textView_parto.setText(inseminacao.parto);
+//        Inseminacao inseminacao = inseminacaos.get(position);
+//
+//        textView_id.setText(inseminacao.id);
+//        textView_datainseminacao.setText(inseminacao.dataInseminacao);
+//        textView_previsaoparto.setText(inseminacao.previsaoParto);
+//        textView_parto.setText(inseminacao.parto);
         // Retorna a view deste inseminacao
         return view;
     }

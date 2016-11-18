@@ -17,8 +17,8 @@ public class Tarefa implements Serializable {
     private Long idTarefa;
     private Bovino bovinoMatriz;
     private TipoTarefaEnum tipoTarefa;
-    private String identificacaoSmartfone;
-    private Date daraInclusao = new Date();
+    private String imei;
+    private Date dataInclusao = new Date();
     private boolean statusDaTarefa;
     private Date dataConclusao;
     private boolean status;
@@ -27,6 +27,7 @@ public class Tarefa implements Serializable {
     public Tarefa(){
         status = true;
         statusDaTarefa = false;
+        imei = "354983059791193";
     }
 
     public Long getIdTarefa() {
@@ -45,12 +46,32 @@ public class Tarefa implements Serializable {
         this.bovinoMatriz = bovinoMatriz;
     }
 
-    public Date getDaraInclusao() {
-        return daraInclusao;
+    public TipoTarefaEnum getTipoTarefa() {
+        return tipoTarefa;
     }
 
-    public void setDaraInclusao(Date daraInclusao) {
-        this.daraInclusao = daraInclusao;
+    public void setTipoTarefa(TipoTarefaEnum tipoTarefa) {
+        this.tipoTarefa = tipoTarefa;
+    }
+
+    public String getImei() {
+        return imei;
+    }
+
+    public void setImei(String imei) {
+        this.imei = imei;
+    }
+
+    public Date getDataInclusao() {
+        return dataInclusao;
+    }
+
+    public void setDataInclusao(Date dataInclusao) {
+        this.dataInclusao = dataInclusao;
+    }
+
+    public boolean isStatusDaTarefa() {
+        return statusDaTarefa;
     }
 
     public Date getDataConclusao() {
@@ -77,19 +98,5 @@ public class Tarefa implements Serializable {
         this.statusDaTarefa = statusDaTarefa;
     }
 
-    public TipoTarefaEnum getTipoTarefa() {
-        return tipoTarefa;
-    }
 
-    public void setTipoTarefa(TipoTarefaEnum tipoTarefa) {
-        this.tipoTarefa = tipoTarefa;
-    }
-
-    public String getIdentificacaoSmartfone() {
-        return identificacaoSmartfone;
-    }
-
-    public void setIdentificacaoSmartfone(String identificacaoSmartfone) {
-        this.identificacaoSmartfone = identificacaoSmartfone;
-    }
 }
