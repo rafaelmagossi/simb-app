@@ -20,8 +20,12 @@ public class Inseminacao implements Serializable {
     private Parto parto;
     private Inseminador inseminador;
     private Date previsaoParto;
-    private Date dataInclusao = new Date();
+    private Date dataInclusao;
     private Boolean status;
+
+    public Inseminacao(){
+        status = true;
+    }
 
 
 

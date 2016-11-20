@@ -1,6 +1,7 @@
 package com.magossi.simb.domain.matriz;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,11 +9,11 @@ import java.util.Date;
  */
 
 
-public class Inseminador {
+public class Inseminador implements Serializable{
 
     private Long idInseminador;
     private String nomeInseminador;
-    private Date dataInclusao = new Date();
+    private Date dataInclusao;
     private Boolean status;
 
     public Inseminador(){

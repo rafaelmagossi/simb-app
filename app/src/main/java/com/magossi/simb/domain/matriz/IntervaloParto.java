@@ -2,6 +2,7 @@ package com.magossi.simb.domain.matriz;
 
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  */
 
 
-public class IntervaloParto {
+public class IntervaloParto implements Serializable {
 
 
     private Long idIntervaloParto;

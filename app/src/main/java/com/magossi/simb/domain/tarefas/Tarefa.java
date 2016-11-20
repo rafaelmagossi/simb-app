@@ -14,6 +14,7 @@ import java.util.Date;
 public class Tarefa implements Serializable {
 
 
+
     private Long idTarefa;
     private Bovino bovinoMatriz;
     private TipoTarefaEnum tipoTarefa;
