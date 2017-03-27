@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="8dp"
-            android:background="@drawable/img_button_novocadastro"
+            android:background="@drawable/img_button_novo_bovino_externo"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_gravity="fill"/>

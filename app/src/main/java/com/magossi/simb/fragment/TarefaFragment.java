@@ -352,11 +352,11 @@ public class TarefaFragment extends Fragment implements InseminadorListInterface
 
 
         if (url != null && erro == null ){
-            Tarefa tarefa = new Tarefa();
-            tarefa.setBovinoMatriz(this.tarefa.getBovinoMatriz());
-            tarefa.setTipoTarefa(TipoTarefaEnum.DiagnosticoDeGestacao);
+//            Tarefa tarefa = new Tarefa();
+//            tarefa.setBovinoMatriz(this.tarefa.getBovinoMatriz());
+//            tarefa.setTipoTarefa(TipoTarefaEnum.DiagnosticoDeGestacao);
 
-            taskSalvaTarefaObj.execute(tarefa);
+/*            taskSalvaTarefaObj.execute(tarefa);*/
 
         }
 
