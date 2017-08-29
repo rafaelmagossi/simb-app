@@ -24,9 +24,8 @@ import com.magossi.simb.domain.bovino.Ecc;
 import com.magossi.simb.domain.bovino.Pelagem;
 import com.magossi.simb.domain.bovino.Peso;
 import com.magossi.simb.domain.bovino.Raca;
-import com.magossi.simb.interfaces.PelagemListInterface;
-import com.magossi.simb.interfaces.RacaListInterface;
-import com.magossi.simb.task.buscar.TaskBuscaEccBovinoList;
+import com.magossi.simb.interfaces.buscar.PelagemListInterface;
+import com.magossi.simb.interfaces.buscar.RacaListInterface;
 import com.magossi.simb.task.buscar.TaskBuscaPelagemList;
 import com.magossi.simb.task.buscar.TaskBuscaRacaList;
 

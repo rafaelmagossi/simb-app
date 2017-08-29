@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.magossi.simb.activity.BuscarActivity;
 import com.magossi.simb.activity.CadastroActivity;
 import com.magossi.simb.activity.ScannerActivity;
+import com.magossi.simb.activity.TarefasActivity;
 import com.magossi.simb.extra.MainConfig;
 
 public class MainActivity extends AppCompatActivity {
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnClickImgButtonTarefas(View view) {
+        Intent intent = new Intent(this,TarefasActivity.class);
+        startActivity(intent);
     }
 
 

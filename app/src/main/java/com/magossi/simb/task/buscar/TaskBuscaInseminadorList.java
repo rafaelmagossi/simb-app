@@ -6,9 +6,13 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.magossi.simb.domain.bovino.Ecc;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.magossi.simb.domain.bovino.Bovino;
+import com.magossi.simb.domain.matriz.Inseminador;
 import com.magossi.simb.extra.MainConfig;
-import com.magossi.simb.interfaces.EccBovinoListInterface;
+import com.magossi.simb.interfaces.buscar.BovinoListInterface;
+import com.magossi.simb.interfaces.buscar.InseminadorListInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
@@ -18,22 +22,22 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by RafaelMq on 08/11/2016.
+ * Created by RafaelMq on 13/11/2016.
  */
-public class TaskBuscaEccBovinoList extends AsyncTask<String, String, List<Ecc>> {
+public class TaskBuscaInseminadorList extends AsyncTask<String, String, List<Inseminador>> {
 
 
     private HttpClientErrorException erro;
     private Context context;
-    private EccBovinoListInterface eccBovinoListInterface;
+    private InseminadorListInterface inseminadorListInterface;
     private ProgressDialog progress;
     private Activity activity;
 
 
-    public TaskBuscaEccBovinoList(Context context,  EccBovinoListInterface eccBovinoListInterface) {
+    public TaskBuscaInseminadorList(Context context, Activity activity, InseminadorListInterface inseminadorListInterface) {
         this.context = context;
         this.activity = activity;
-        this.eccBovinoListInterface = eccBovinoListInterface;
+        this.inseminadorListInterface = inseminadorListInterface;
 
 
 
@@ -50,23 +54,29 @@ public class TaskBuscaEccBovinoList extends AsyncTask<String, String, List<Ecc>>
 
 
     @Override
-    protected List<Ecc> doInBackground(String... params) {
-        List<Ecc> eccs = null;
-        Ecc[] ec;
+    protected List<Inseminador> doInBackground(String... params) {
+        List<Inseminador> inseminadores = null;
+        Inseminador[] Inseminadores1;
         //String URL = "http://192.168.0.100:8080/"
         String URL = MainConfig.getUrl()
-                +"bovino/"
-                + "{id}"
-                + "/ecc";
+                + params[0]
+                + "/{opcao}";
 
         try {
             erro = null;
             publishProgress("Aguarde");
-            String url = URL.replace("{id}", params[0]);
+            String url = URL.replace("{opcao}", params[1]);
+
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+            MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
+            mappingJackson2HttpMessageConverter.setObjectMapper(objectMapper);
             RestTemplate restTemplate = new RestTemplate();
-            restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-            ec = restTemplate.getForObject(url, Ecc[].class);
-            eccs = Arrays.asList(ec);
+            restTemplate.getMessageConverters().add(mappingJackson2HttpMessageConverter);
+            Inseminadores1 = restTemplate.getForObject(url, Inseminador[].class);
+            inseminadores = Arrays.asList(Inseminadores1);
+
             publishProgress("Pronto");
 
         } catch (HttpClientErrorException e) {
@@ -77,7 +87,7 @@ public class TaskBuscaEccBovinoList extends AsyncTask<String, String, List<Ecc>>
             Log.e("http", ex.getMessage(), ex);
         }
 
-        return (eccs);
+        return (inseminadores);
 
     }
 
@@ -88,16 +98,16 @@ public class TaskBuscaEccBovinoList extends AsyncTask<String, String, List<Ecc>>
     }
 
     @Override
-    protected void onPostExecute(List<Ecc> params) {
+    protected void onPostExecute(List<Inseminador> params) {
 
         progress.setMessage("Pronto");
 
         if(params != null && erro == null){
-            eccBovinoListInterface.depoisBuscaEccsBovino(params,null);
+            inseminadorListInterface.depoisBuscaInseminadores(params,null);
             progress.dismiss();
 
         }else if(params == null && erro != null){
-            eccBovinoListInterface.depoisBuscaEccsBovino(params,erro.getStatusCode().toString());
+            inseminadorListInterface.depoisBuscaInseminadores(params,erro.getStatusCode().toString());
             progress.dismiss();
             //Toast.makeText(this.context, "Nao Encontrado", Toast.LENGTH_SHORT).show();
         }

@@ -8,8 +8,7 @@ import android.widget.Toast;
 
 import com.magossi.simb.domain.bovino.Bovino;
 import com.magossi.simb.extra.MainConfig;
-import com.magossi.simb.interfaces.EccBovinoObjInterface;
-import com.magossi.simb.interfaces.PesoBovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.PesoBovinoObjInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:isScrollContainer="false"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentStart="true"
+    android:layout_below="@+id/toolbar_cadastro">
+
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="13dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/textview_tarefa_inseminacao_monta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:text="Monta?"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp" />
+
+        <RadioGroup
+            android:id="@+id/radiogroup_tarefa_inseminacao_monta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/textview_tarefa_inseminacao_monta"
+            android:layout_marginTop="5dp">
+            <RadioButton
+                android:id="@+id/radiobutton_monta_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sim"
+                android:textSize="16dp"
+                android:checked="false" />
+            <RadioButton
+                android:id="@+id/radiobutton_monta_nao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Não"
+                android:textSize="16dp"
+                android:checked="true"
+                android:layout_marginLeft="10dp"/>
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/textview_tarefa_inseminacao_inseminador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/radiogroup_tarefa_inseminacao_monta"
+            android:layout_marginTop="5dp"
+            android:text="Selecione o Inseminador"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp" />
+
+        <Spinner
+            android:id="@+id/spinner_inseminador"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textview_tarefa_inseminacao_inseminador"
+            android:layout_alignLeft="@+id/textview_tarefa_inseminacao_inseminador"
+            android:layout_alignRight="@+id/textview_tarefa_inseminacao_inseminador"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/spinner"
+            android:spinnerMode="dialog"
+            android:textAlignment="center" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/textview_cadastro_pelagem"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_below="@id/spinner_raca"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:text="Selecione a Pelagem"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <!--android:textSize="16dp" />-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_pelagem"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_below="@+id/textview_cadastro_pelagem"-->
+            <!--android:layout_alignLeft="@+id/textview_cadastro_pelagem"-->
+            <!--android:layout_alignRight="@+id/input_layout_mae"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:background="@drawable/spinner"-->
+            <!--android:spinnerMode="dialog"-->
+            <!--android:textAlignment="center" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textview_cadastro_ecc"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_below="@id/spinner_pelagem"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:text="Selecione o ECC"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <!--android:textSize="16dp" />-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_ecc"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_below="@+id/textview_cadastro_ecc"-->
+            <!--android:layout_alignLeft="@+id/textview_cadastro_ecc"-->
+            <!--android:layout_alignRight="@+id/textview_cadastro_ecc"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:background="@drawable/spinner"-->
+            <!--android:spinnerMode="dialog"-->
+            <!--android:textAlignment="center" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textview_tarefa_inseminacao_touro"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_below="@id/spinner_inseminador"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:text="Nome do Touro"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <!--android:textSize="16dp" />-->
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_touro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/spinner_inseminador"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@+id/spinner_inseminador"
+            android:maxLines="2">
+
+            <EditText
+                android:id="@+id/edittext_tarefa_inseminacao_touro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome do Touro" />
+
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textview_tarefa_inseminacao_datainsem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/input_layout_touro"
+            android:layout_marginTop="10dp"
+            android:text="Data da Insemincao"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14dp" />
+
+
+        <com.github.pinball83.maskededittext.MaskedEditText
+            android:id="@+id/edittext_tarefa_inseminacao_datainsem"
+            app:mask="**/**/**** "
+            app:notMaskedSymbol="*"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textview_tarefa_inseminacao_datainsem"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textSize="28dp"/>
+
+        <!--<com.github.pinball83.maskededittext.MaskedEditText-->
+            <!--android:id="@+id/edittext_peso"-->
+            <!--app:mask="***.*"-->
+            <!--app:notMaskedSymbol="*"-->
+            <!--android:layout_width="85dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_below="@+id/textview_cadastro_peso"-->
+            <!--android:inputType="number"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textSize="30dp" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textview_cadastro_arroba"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_toRightOf="@id/edittext_peso"-->
+            <!--android:layout_alignBottom="@id/edittext_peso"-->
+            <!--android:layout_marginLeft="0dp"-->
+            <!--android:layout_marginBottom="15dp"-->
+            <!--android:text=" Kg"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <!--android:textSize="25dp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/button_proximo2"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:text="PROXIMO"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_marginBottom="10dp"/>-->
+
+    </RelativeLayout>
+</ScrollView>
+
+
+
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_below="@+id/toolbar_cadastro"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<android.support.design.widget.TextInputLayout--><!--android:id="@+id/input_layout_password"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content">-->
+
+    <!--<EditText--><!--android:id="@+id/input_password"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:inputType="textPassword"--><!--android:hint="Senha"--><!--/>--><!--</android.support.design.widget.TextInputLayout>-->

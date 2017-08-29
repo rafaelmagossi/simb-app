@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.magossi.simb.domain.bovino.Bovino;
 import com.magossi.simb.extra.MainConfig;
-import com.magossi.simb.interfaces.BovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.BovinoSalvarInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
@@ -24,13 +24,13 @@ public class TaskSalvaBobinoObj extends AsyncTask<Bovino, String, String> {
     private String urlBovino;
 
     private Context context;
-    private BovinoObjInterface bovinoObjInterface;
+    private BovinoSalvarInterface bovinoSalvarInterface;
     private ProgressDialog progress;
 
 
-    public TaskSalvaBobinoObj(Context context, BovinoObjInterface bovinoObjInterface){
+    public TaskSalvaBobinoObj(Context context, BovinoSalvarInterface bovinoSalvarInterface){
         this.context = context;
-        this.bovinoObjInterface = bovinoObjInterface;
+        this.bovinoSalvarInterface = bovinoSalvarInterface;
     }
 
 
@@ -79,7 +79,7 @@ public class TaskSalvaBobinoObj extends AsyncTask<Bovino, String, String> {
         progress.setMessage("Salvo");
 
         if(params != null ){
-            bovinoObjInterface.depoisSalvarBovino(params, null);
+            bovinoSalvarInterface.depoisSalvarBovino(params, null);
             progress.dismiss();
             Toast.makeText(this.context, "Salvo", Toast.LENGTH_SHORT).show();
 
@@ -87,7 +87,7 @@ public class TaskSalvaBobinoObj extends AsyncTask<Bovino, String, String> {
             progress.dismiss();
             Toast.makeText(this.context, "Erro ao Salvar", Toast.LENGTH_SHORT).show();
         }else if(erroHttp != null){
-            bovinoObjInterface.depoisSalvarBovino(null, erroHttp.getStatusCode().toString());
+            bovinoSalvarInterface.depoisSalvarBovino(null, erroHttp.getStatusCode().toString());
             progress.dismiss();
             Toast.makeText(this.context, "Erro ao Salvar", Toast.LENGTH_SHORT).show();
         }

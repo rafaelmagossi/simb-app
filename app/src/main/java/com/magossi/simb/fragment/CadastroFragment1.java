@@ -23,8 +23,8 @@ import com.magossi.simb.R;
 import com.magossi.simb.activity.CadastroActivity;
 import com.magossi.simb.domain.bovino.Fazenda;
 import com.magossi.simb.domain.bovino.Proprietario;
-import com.magossi.simb.interfaces.FazendaListInterface;
-import com.magossi.simb.interfaces.ProprietarioListInterface;
+import com.magossi.simb.interfaces.buscar.FazendaListInterface;
+import com.magossi.simb.interfaces.buscar.ProprietarioListInterface;
 import com.magossi.simb.task.buscar.TaskBuscaFazendaList;
 import com.magossi.simb.task.buscar.TaskBuscaProprietarioList;
 

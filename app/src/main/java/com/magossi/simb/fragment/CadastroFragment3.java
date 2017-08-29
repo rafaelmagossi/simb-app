@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.magossi.simb.MainActivity;
 import com.magossi.simb.R;
 import com.magossi.simb.activity.CadastroActivity;
-import com.magossi.simb.interfaces.BovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.BovinoSalvarInterface;
 import com.magossi.simb.task.salvar.TaskSalvaBobinoObj;
 
 import java.text.DateFormat;
@@ -25,7 +25,7 @@ import java.util.Date;
 /**
  * Created by RafaelMq on 07/09/2016.
  */
-public class CadastroFragment3 extends Fragment implements BovinoObjInterface {
+public class CadastroFragment3 extends Fragment implements BovinoSalvarInterface {
 
     private CadastroActivity cadastroActivity;
 

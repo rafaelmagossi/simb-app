@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.magossi.simb.domain.bovino.Raca;
 import com.magossi.simb.extra.MainConfig;
-import com.magossi.simb.interfaces.RacaListInterface;
+import com.magossi.simb.interfaces.buscar.RacaListInterface;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;

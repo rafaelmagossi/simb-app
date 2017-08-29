@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.magossi.simb.domain.bovino.Proprietario;
 import com.magossi.simb.extra.MainConfig;
-import com.magossi.simb.interfaces.ProprietarioListInterface;
+import com.magossi.simb.interfaces.buscar.ProprietarioListInterface;
 
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;

@@ -18,7 +18,7 @@ import com.magossi.simb.R;
 import com.magossi.simb.activity.BovinoActivity;
 import com.magossi.simb.adapter.BovinoAdapter;
 import com.magossi.simb.domain.bovino.Bovino;
-import com.magossi.simb.interfaces.BovinoListInterface;
+import com.magossi.simb.interfaces.buscar.BovinoListInterface;
 import com.magossi.simb.task.buscar.TaskBuscaBovinoList;
 
 public class BovinosFragment extends Fragment implements BovinoListInterface {

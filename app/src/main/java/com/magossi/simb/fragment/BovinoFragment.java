@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,12 +28,17 @@ import com.magossi.simb.adapter.EccAdapter;
 import com.magossi.simb.adapter.PesoAdapter;
 import com.magossi.simb.domain.bovino.Ecc;
 import com.magossi.simb.domain.bovino.Peso;
-import com.magossi.simb.interfaces.EccBovinoListInterface;
-import com.magossi.simb.interfaces.EccBovinoObjInterface;
-import com.magossi.simb.interfaces.PesoBovinoObjInterface;
-import com.magossi.simb.task.buscar.TaskBuscaEccBovinoList;
+import com.magossi.simb.domain.matriz.FichaMatriz;
+import com.magossi.simb.domain.tarefas.Tarefa;
+import com.magossi.simb.domain.tarefas.TipoTarefaEnum;
+import com.magossi.simb.interfaces.salvar.EccBovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.FichaMatrizBovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.PesoBovinoObjInterface;
+import com.magossi.simb.interfaces.salvar.TarefaSalvarInterface;
 import com.magossi.simb.task.salvar.TaskSalvaEccBovinoObj;
+import com.magossi.simb.task.salvar.TaskSalvaFichaMatrizBovinoObj;
 import com.magossi.simb.task.salvar.TaskSalvaPesoBovinoObj;
+import com.magossi.simb.task.salvar.TaskSalvaTarefaObj;
 import com.squareup.picasso.Picasso;
 
 import com.magossi.simb.R;
@@ -50,10 +54,12 @@ import java.util.Date;
 import java.util.List;
 
 
-public class BovinoFragment extends Fragment implements EccBovinoObjInterface, PesoBovinoObjInterface{
+public class BovinoFragment extends Fragment implements EccBovinoObjInterface, PesoBovinoObjInterface, FichaMatrizBovinoObjInterface, TarefaSalvarInterface{
 
     private TaskSalvaEccBovinoObj taskSalvaEccBovinoObj;
     private TaskSalvaPesoBovinoObj taskSalvaPesoBovinoObj;
+    private TaskSalvaFichaMatrizBovinoObj taskSalvaFichaMatrizBovinoObj;
+    private TaskSalvaTarefaObj taskSalvaTarefaObj;
 
     private Bovino bovino;
     private TextView textview_nome;
@@ -95,6 +101,8 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
 
         taskSalvaEccBovinoObj = new TaskSalvaEccBovinoObj(this.getContext(),this);
         taskSalvaPesoBovinoObj = new TaskSalvaPesoBovinoObj(this.getContext(),this);
+        taskSalvaFichaMatrizBovinoObj = new TaskSalvaFichaMatrizBovinoObj(this.getContext(),this);
+        taskSalvaTarefaObj = new TaskSalvaTarefaObj(this.getContext(),this);
 
 
         textview_nome = (TextView) view.findViewById(R.id.textview_busca_nome_bovino);
@@ -184,9 +192,22 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(getContext(), MatrizActivity.class);
-                    intent.putExtra("bovino", bovino);
-                    startActivity(intent);
+                    if(bovino.getFichaMatriz() != null){
+
+                        Intent intent = new Intent(getContext(), MatrizActivity.class);
+                        intent.putExtra("FichaMatriz", bovino.getFichaMatriz());
+                        startActivity(intent);
+
+                    }else{
+
+                        dialogFichaMatriz(getContext());
+
+
+                    }
+
+//                    Intent intent = new Intent(getContext(), MatrizActivity.class);
+//                    intent.putExtra("bovino", bovino);
+//                    startActivity(intent);
 
 
 
@@ -431,6 +452,52 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
 
     }
 
+    public void dialogFichaMatriz(Context context){
+        dialog = new AlertDialog.Builder(context);
+//        dialogView = getActivity().getLayoutInflater().inflate( R.layout.fragment_layout_incluirpeso, null );
+//
+//        dialog.setView(dialogView);
+        dialog.setMessage("Criar nova Matriz?");
+        dialog.setPositiveButton(" Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                try {
+
+
+                        FichaMatriz fichaMatriz = new FichaMatriz();
+
+
+
+
+                        bovino.setFichaMatriz(fichaMatriz);
+
+                        //chamada WebService
+                        taskSalvaFichaMatrizBovinoObj.execute(bovino);
+
+
+
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    Toast.makeText(getContext(), "Erro ao Salvar Ficha Matriz", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
+        dialog.setNegativeButton("Não     ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = dialog.create();
+        dialog.show();
+    }
+
     @Override
     public void depoisAlteraPesoBovino(String url, String erro) {
 
@@ -442,6 +509,25 @@ public class BovinoFragment extends Fragment implements EccBovinoObjInterface, P
     public void depoisAlteraEccBovino(String url, String erro) {
 
         textView_ultimoEcc.setText(bovino.getEcc().get(bovino.getEcc().size()-1).getEscore()+"");
+
+    }
+
+    @Override
+    public void depoisSalvaFichaBovino(String url, String erro) {
+
+
+        if (url != null && erro == null ){
+            Tarefa tarefa = new Tarefa();
+            tarefa.setBovinoMatriz(bovino);
+            tarefa.setTipoTarefa(TipoTarefaEnum.Inseminação);
+
+            taskSalvaTarefaObj.execute(tarefa);
+
+        }
+    }
+
+    @Override
+    public void depoisSalvarTarefa(String url, String erro) {
 
     }
 

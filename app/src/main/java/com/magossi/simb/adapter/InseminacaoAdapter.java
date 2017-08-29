@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.magossi.simb.R;
 import com.magossi.simb.domain.matriz.Inseminacao;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,13 +56,56 @@ public class InseminacaoAdapter extends BaseAdapter {
 
 
         // Atualiza os valores das views
-        Inseminacao inseminacao = inseminacaos.get(position);
 
-        textView_id.setText(inseminacao.id);
-        textView_datainseminacao.setText(inseminacao.dataInseminacao);
-        textView_previsaoparto.setText(inseminacao.previsaoParto);
-        textView_parto.setText(inseminacao.parto);
+        Inseminacao inseminacao = inseminacaos.get(position);
+        String auxPrevisaoParto = "";
+        String auxDataDaInseminacao = "";
+
+        try {
+            auxDataDaInseminacao = formataDateToString(inseminacao.getDataDaInseminacao());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+
+        textView_id.setText(inseminacao.getIdInseminacao().toString());
+        textView_datainseminacao.setText(auxDataDaInseminacao);
+
+        if(inseminacao.getPrevisaoParto() == null){
+            textView_previsaoparto.setText("                     ");
+        }else {
+
+            try {
+                auxPrevisaoParto = formataDateToString(inseminacao.getPrevisaoParto());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            textView_previsaoparto.setText(auxPrevisaoParto);
+        }
+        if(inseminacao.getParto() == null){
+            textView_parto.setText(" NAO");
+        }else{
+            textView_parto.setText(" SIM");
+        }
+
         // Retorna a view deste inseminacao
         return view;
+    }
+
+
+    public static String formataDateToString(Date data) throws Exception {
+        if (data == null || data.equals(""))
+            return null;
+        String Auxdate = null;
+        try {
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            Auxdate = formatter.format(data);
+        } catch (Exception e) {
+            throw e;
+        }
+        return Auxdate;
     }
 }
